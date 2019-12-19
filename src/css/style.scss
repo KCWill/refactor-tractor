@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+}
+
+body {
+  font-family: 'Open Sans';
+  margin: 0;
+  background-color: #4d4e4f;
+  height: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  height: 80px;
+  padding-top: 10px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  height: 1500px;
+}
+
+.main-sidebar-body {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  height: 100%;
+}
+
+.body-sidebar-sidebarContainer {
+  background-color: #9A9DAB;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: scroll;
+}
+
+.sidebar-header-name {
+  text-align: center;
+}
+
+.sidebar-header-userInfo {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: .5em .5em .5em .5em;
+  width: inherit;
+}
+
+.sidebar-header-line {
+  color: #ffffff;
+  border: 1px solid black;
+  margin: 1em 1em 0 1em;
+  height: 0;
+  width: 80%;
+}
+
+.sidebar-header-userImage {
+  border-radius: 50%;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  height: 200px;
+  width: 200px;
+  margin: 4px 2px 2px 2px;
+  justify-content: center;
+}
+
+.sidebar-body-friendContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-friendContainer-listItems {
+  text-align: left;
+}
+
+.body-main-infoContainter {
+  width: 100%;
+  border: 1px solid black;
+  margin: 0 0 1em;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.main-column-hydration {
+  display: flex;
+  flex-direction: row;
+  height: 25%
+}
+
+.main-column-activity {
+  display: flex;
+  flex-direction: row;
+  height: 50%
+}
+
+.main-column-sleep {
+  display: flex;
+  flex-direction: row;
+  height: 35%
+}
+
+.infoContainer-cardContainer-card-horizontal {
+  width: 100%;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1%;
+  justify-content: space-between;
+}
+
+.horizontalCard-activity-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  overflow: scroll;
+}
+
+.infoContainer-cardContainer-card-vertical {
+  width: 100%;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  margin: 1%;
+  overflow: scroll;
+}
+
+.card-today-hydration {
+  text-align: center;
+  background-color: #5BC8AC;
+  height: auto;
+  font-size: 1.5em;
+  margin: .5em;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.card-today-sleep {
+  text-align: center;
+  background-color: #EC96A4;
+  height: auto;
+  font-size: 1.5em;
+  margin: .5em;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.card-today-activity {
+  text-align: center;
+  background-color: #DFE166;
+  height: auto;
+  font-size: 1.5em;
+  margin: .3em;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.card-history-hydration {
+  text-align: center;
+  background-color: #5BC8AC;
+  font-size: 1em;
+  margin: .5em;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+.card-history-sleep {
+  text-align: center;
+  background-color: #EC96A4;
+  font-size: 1em;
+  margin: .5em;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+.card-history-activity {
+  text-align: center;
+  background-color: #DFE166;
+  font-size: 1em;
+  margin: .5em;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+  height: 93%;
+  overflow: scroll;
+}
+
+.number {
+  font-size: 2em;
+  font-weight: bolder;
+  color: #4d4e4f;
+  font-kerning: normal;
+}
+
+.historicalWeek {
+  text-align: center;
+  font-size: 1em;
+  font-weight: bolder;
+  margin: .5em;
+  color: black;
+}
+
+.thisWeek {
+  text-align: center;
+  font-size: 1em;
+  font-weight: bolder;
+  margin: .5em;
+  color: black;
+}
+
+.card-vertical-list {
+  list-style-type: none;
+  font-weight: lighter;
+  font-style: italic;
+  padding-left: 0;
+  font-size: 1em;
+}
+
+.historical-list-listItem {
+  padding: .3em;
+  font-weight: bold;
+  font-family: sans-serif;
+}

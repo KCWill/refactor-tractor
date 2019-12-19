@@ -1,13 +1,197 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <title>Webpack Starter Kit</title>
-  </head>
-  <body>
-    <h1>Webpack Starter Kit</h1>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Activity Tracker</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet" />
+</head>
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+<body>
+  <h1 id="headerText">Activity Tracker</h1>
+  <section class="main">
+    <section class="main-sidebar-body">
+      <section class="body-sidebar-sidebarContainer">
+        <h2 class="sidebar-header-name" id="sidebarName">Name Name</h2>
+        <div class="sidebar-header-line"></div>
+        <img src="./images/The Rock.jpg" class="sidebar-header-userImage"></img>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="userAddress"></p>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="userEmail"></p>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="userStridelength"></p>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="stepGoalCard"></p>
+        <p class="sidebar-header-userInfo" id="avStepGoalCard">
+          <p>
+            <div class="sidebar-header-line"></div>
+            <section class="sidebar-body-friendContainer">
+              <p class="sidebar-header-userInfo">Friends</p>
+              <section class="sidebar-friendContainer-listItems">
+                <ul class="card-vertical-list" id="friendList">
+                  <!-- friend list goes here -->
+                </ul>
+              </section>
+              <div class="sidebar-header-line"></div>
+              <p class="thisWeek">Keep up the good work! You were increasingly active on these dates:</p>
+              <ul class="card-vertical-list" id="streakListMinutes">
+                <!-- friend list goes here -->
+              </ul>
+            </section>
+      </section>
+    </section>
+    <section class="body-main-infoContainter">
+      <section class="main-column-hydration">
+        <section class="infoContainer-cardContainer-card-horizontal">
+          <div class="card-today-hydration">
+            <p id="hydrationToday"></p>
+          </div>
+          <div class="card-today-hydration">
+            <p id="hydrationAverage"></p>
+          </div>
+        </section>
+        <section class="infoContainer-cardContainer-card-vertical">
+          <div class="card-history-hydration">
+            <p class="thisWeek">Water intake this week:</p>
+            <div class="sidebar-header-line"></div>
+            <ul class="card-vertical-list" id="hydrationThisWeek">
+              <!-- Hydration week list goes here -->
+            </ul>
+          </div>
+          <div class="card-history-hydration">
+            <p class="historicalWeek"></p>
+            <div class="sidebar-header-line"></div>
+            <ul class="card-vertical-list" id="hydrationEarlierWeek">
+              <!-- Hydration week list goes here -->
+            </ul>
+          </div>
+        </section>
+      </section>
+      <section class="main-column-activity">
+        <section class="infoContainer-cardContainer-card-horizontal">
+          <section class="horizontalCard-activity-container">
+            <div class="card-today-activity">
+              <p id="userStepsToday"></p>
+            </div>
+            <div class="card-today-activity">
+              <p id="avgStepsToday"></p>
+            </div>
+          </section>
+          <section class="horizontalCard-activity-container">
+            <div class="card-today-activity">
+              <p id="userStairsToday"></p>
+            </div>
+            <div class="card-today-activity">
+              <p id="avgStairsToday"></p>
+            </div>
+          </section>
+          <section class="horizontalCard-activity-container">
+            <div class="card-today-activity">
+              <p id="userMinutesToday"></p>
+            </div>
+            <div class="card-today-activity">
+              <p id="avgMinutesToday"></p>
+            </div>
+          </section>
+        </section>
+        <section class="infoContainer-cardContainer-card-horizontal">
+          <section class="horizontalCard-activity-container">
+            <div class="card-history-activity">
+              <p class="thisWeek">Your steps this week</p>
+              <div class="sidebar-header-line"></div>
+              <ul class="card-vertical-list" id="userStepsThisWeek">
+                <!-- Activity week list goes here -->
+              </ul>
+            </div>
+            <div class="card-history-activity">
+              <p class="thisWeek">Your stair count this week</p>
+              <div class="sidebar-header-line"></div>
+              <ul class="card-vertical-list" id="userStairsThisWeek">
+                <!-- Activity week list goes here -->
+              </ul>
+            </div>
+          </section>
+          <section class="horizontalCard-activity-container">
+            <div class="card-history-activity">
+              <p class="thisWeek">Your minutes of activity this week</p>
+              <div class="sidebar-header-line"></div>
+              <ul class="card-vertical-list" id="userMinutesThisWeek">
+                <!-- Activity week list goes here -->
+              </ul>
+            </div>
+            <div class="card-history-activity">
+              <p class="thisWeek">Winner's steps this week</p>
+              <div class="sidebar-header-line"></div>
+              <ul class="card-vertical-list" id="bestUserSteps">
+                <!-- Activity week list goes here -->
+              </ul>
+            </div>
+          </section>
+        </section>
+      </section>
+      <section class="main-column-sleep">
+        <section class="infoContainer-cardContainer-card-horizontal">
+          <div class="card-today-sleep">
+            <p id="sleepToday"></p>
+          </div>
+          <div class="card-today-sleep">
+            <p id="sleepQualityToday"></p>
+          </div>
+          <div class="card-today-sleep">
+            <p id="avUserSleepQuality"></p>
+          </div>
+        </section>
+        <section class="infoContainer-cardContainer-card-vertical">
+          <div class="card-history-sleep">
+            <p class="thisWeek">Hours of sleep this week</p>
+            <div class="sidebar-header-line"></div>
+            <ul class="card-vertical-list" id="sleepThisWeek">
+              <!-- Sleep week list goes here -->
+            </ul>
+          </div>
+          <div class="card-history-sleep">
+            <p class="historicalWeek"></p>
+            <div class="sidebar-header-line"></div>
+            <ul class="card-vertical-list" id="sleepEarlierWeek">
+              <!-- Sleep week list goes here -->
+            </ul>
+          </div>
+        </section>
+      </section>
+    </section>
+    <section class="main-sidebar-body">
+      <section class="body-sidebar-sidebarContainer">
+        <h2 class="sidebar-header-name" id="sidebarName">FRIENDLY STEP CHALLENGE!</h2>
+        <div class="sidebar-header-line"></div>
+        <img src="./images/person walking on path.jpg" class="sidebar-header-userImage"></img>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="bigWinner"></p>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="stepGoalCard"></p>
+        <p class="sidebar-header-userInfo" id="avStepGoalCard">
+          <p>
+            <section class="sidebar-body-friendContainer">
+              <section class="sidebar-friendContainer-listItems">
+                <p class="thisWeek">Rank this week</p>
+                <ul class="card-vertical-list" id="friendChallengeListToday">
+                  <!-- friend list goes here -->
+                </ul>
+                <div class="sidebar-header-line"></div>
+                <p class="historicalWeek">- Historical Rank</p>
+                <ul class="card-vertical-list" id="friendChallengeListHistory">
+                  <!-- friend list goes here -->
+                </ul>
+                <div class="sidebar-header-line"></div>
+              </section>
+              <p class="thisWeek">You had 3 DAY STEP STREAKS on these days:</p>
+              <ul class="card-vertical-list" id="streakList">
+                <!-- friend list goes here -->
+              </ul>
+            </section>
+      </section>
+    </section>
+  </section>
+</body>
 
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
-  </body>
 </html>
