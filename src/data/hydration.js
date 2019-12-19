@@ -25000,3 +25000,5 @@ const hydrationData = [
     "numOunces": 87
   }
 ];
+
+export default hydrationData;

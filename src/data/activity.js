@@ -35000,3 +35000,5 @@ const activityData = [
     "flightsOfStairs": 14
   }
 ];
+ 
+export default activityData;

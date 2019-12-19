@@ -21,4 +21,4 @@ class Hydration {
 }
 
 
-export defualt Hydration;
+export default Hydration;

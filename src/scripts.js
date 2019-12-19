@@ -1,6 +1,8 @@
 import './css/base.scss';
 import './css/style.scss';
 
+import './images/person walking on path.jpg';
+import './images/The Rock.jpg';
 
 import userData from './data/users';
 import hydrationData from './data/hydration';
