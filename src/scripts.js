@@ -52,6 +52,7 @@ function startApp() {
   let userList = [];
   makeUsers(userList);
   let userRepo = new UserRepo(userList);
+  // let dateUtility = new DateUtility(hydrationData)
   let hydrationRepo = new Hydration(hydrationData);
   let sleepRepo = new Sleep(sleepData);
   let activityRepo = new Activity(activityData);
