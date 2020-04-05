@@ -117,7 +117,7 @@ describe('User', function() {
     const users = [user1, user2, user3, user4];
     const userRepo = new UserRepo(users);
 
-    console.log(user2.getFriendsNames(userRepo));
+    // console.log(user2.getFriendsNames(userRepo));
     expect(user2.getFriendsNames(userRepo)).to.deep.equal(['Alex Roth', 'The Rock', 'Rainbow Dash']);
   });
 });
