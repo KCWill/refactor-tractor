@@ -1,26 +1,26 @@
 import sleepData from './data/sleep';
   import Utility from '../src/Utility'
 
-  class Sleep {
+  class Sleep extends Utility {
     constructor(sleepData) {
+      super(sleepData);
       this.sleepData = sleepData;
-      this.utility = new Utility(sleepData);
     }
     calculateAverageSleep(id) {
       let relevantData = 'hoursSlept'
-      return this.utility.calculateDailyAverage(id, relevantData);
+      return this.calculateDailyAverage(id, relevantData);
     }
     calculateAverageSleepQuality(id) {
       let relevantData = 'sleepQuality'
-      return this.utility.calculateDailyAverage(id, relevantData);
+      return this.calculateDailyAverage(id, relevantData);
     }
     calculateDailySleep(id, date) {
       let relevantData = 'hoursSlept'
-      return this.utility.displayDailyData(id, date, relevantData)
+      return this.displayDailyData(id, date, relevantData)
     }
     calculateDailySleepQuality(id, date) {
       let relevantData = 'sleepQuality'
-      return this.utility.displayDailyData(id, date, relevantData)
+      return this.displayDailyData(id, date, relevantData)
     }
     calculateWeekSleep(date, id, userRepo) {
       return 'calculateWeekSleep', userRepo.getWeekFromDate(date, id, this.sleepData).map((data) => `${data.date}: ${data.hoursSlept}`);
@@ -30,7 +30,7 @@ import sleepData from './data/sleep';
     }
     calculateAllUserSleepQuality() {
       let relevantData = 'sleepQuality'
-      return this.utility.calculateAverage(relevantData);
+      return this.calculateAverage(relevantData);
     }
     determineBestSleepers(date, userRepo) {
       let timeline = userRepo.chooseWeekDataForAllUsers(this.sleepData, date);
