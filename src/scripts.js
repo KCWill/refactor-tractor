@@ -4,10 +4,11 @@ import './css/style.scss';
 import './images/person walking on path.jpg';
 import './images/The Rock.jpg';
 
-import userData from './data/users';
-import hydrationData from './data/hydration';
-import sleepData from './data/sleep';
-import activityData from './data/activity';
+import fetchUserData from './index'
+// import userData from './data/users';
+// import hydrationData from './data/hydration';
+// import sleepData from './data/sleep';
+// import activityData from './data/activity';
 
 import User from './User';
 import Activity from './Activity';
@@ -47,8 +48,22 @@ var userMinutesThisWeek = document.getElementById('userMinutesThisWeek');
 var bestUserSteps = document.getElementById('bestUserSteps');
 var streakList = document.getElementById('streakList');
 var streakListMinutes = document.getElementById('streakListMinutes')
+let userData;
+let sleepData;
+let activityData;
+let hydrationData;
+
+fetchUserData().then(data => {
+    userData = data.userData;
+    sleepData = data.sleepData;
+    activityData = data.activityData;
+    hydrationData = data.hydrationData;
+  })
+  .then(startApp)
+  .catch(error => console.log(error.message))
 
 function startApp() {
+
   let userList = [];
   makeUsers(userList);
   let userRepo = new UserRepo(userList);
@@ -70,6 +85,7 @@ function startApp() {
 }
 
 function makeUsers(array) {
+  console.log(userData);
   userData.forEach(function(dataItem) {
     let user = new User(dataItem);
     array.push(user);
@@ -100,7 +116,7 @@ function makeFriendHTML(user, userStorage) {
   return user.getFriendsNames(userStorage).map(friendName => `<li class='historical-list-listItem'>${friendName}</li>`).join('');
 }
 
-function makeWinnerID(activityInfo, user, dateString, userStorage){
+function makeWinnerID(activityInfo, user, dateString, userStorage) {
   return activityInfo.getWinnerId(user, dateString, userStorage)
 }
 
@@ -183,4 +199,32 @@ function makeStepStreakHTML(id, activityInfo, userStorage, method) {
   return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
 }
 
-startApp();
+// function fetchUserData() {
+//   let fetchedUserData =
+//     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData');
+//
+//
+//   let fetchedSleepData =
+//     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData');
+//
+//
+//   let fetchedActivityData =
+//     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData');
+//
+//
+//   let fetchedHydrationData =
+//     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData');
+//
+//   Promise.all([fetchedUserData, fetchedSleepData, fetchedActivityData, fetchedHydrationData])
+//     .then(responses => {
+//       return Promise.all(responses.map(response => response.json()));
+//     }).then(([users, sleep, activity, hydration]) => {
+//
+//       let fetchedData = [users, sleep, activity, hydration];
+//
+//       // console.log(users)
+//     })
+//   return fetchedData
+// }
+
+// startApp();
