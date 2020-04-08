@@ -1,3 +1,15 @@
+$hydration-color: #5BC8AC;
+$sleep-color: #EC96A4;
+$activity-color: #DFE166;
+@mixin simple-border($color) {
+  border: 1px solid $color;
+}
+
+@mixin standard-flex($direction){
+  display: flex;
+  flex-direction: $direction;
+}
+
 * {
   margin: 0;
 }
@@ -16,24 +28,28 @@ h1 {
   padding-top: 10px;
 }
 
+button {
+  background-color: black;
+  &:hover{
+    background-color: complement(black);
+  }
+}
+
 .main {
-  display: flex;
-  flex-direction: row;
+  @include standard-flex(row);
   height: 1500px;
 }
 
 .main-sidebar-body {
-  display: flex;
-  flex-direction: row;
+  @include standard-flex(row);
   width: 25%;
   height: 100%;
 }
 
 .body-sidebar-sidebarContainer {
+  @include simple-border(black);
+  @include standard-flex(column);
   background-color: #9A9DAB;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   text-align: center;
   overflow: scroll;
@@ -71,8 +87,7 @@ h1 {
 }
 
 .sidebar-body-friendContainer {
-  display: flex;
-  flex-direction: column;
+  @include standard-flex(column);
 }
 
 .sidebar-friendContainer-listItems {
@@ -80,132 +95,119 @@ h1 {
 }
 
 .body-main-infoContainter {
+  @include standard-flex(column);
   width: 100%;
   border: 1px solid black;
   margin: 0 0 1em;
-  display: flex;
-  flex-direction: column;
   overflow: scroll;
 }
 
 .main-column-hydration {
-  display: flex;
-  flex-direction: row;
+  @include standard-flex(row);
   height: 25%
 }
 
 .main-column-activity {
-  display: flex;
-  flex-direction: row;
+  @include standard-flex(row);
   height: 50%
 }
 
 .main-column-sleep {
-  display: flex;
-  flex-direction: row;
+  @include standard-flex(row);
   height: 35%
 }
 
 .infoContainer-cardContainer-card-horizontal {
+  @include simple-border(black);
+  @include standard-flex(column);
   width: 100%;
   background-color: white;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   margin: 1%;
   justify-content: space-between;
 }
 
 .horizontalCard-activity-container {
-  display: flex;
-  flex-direction: row;
+  @include standard-flex(row);
   justify-content: space-around;
   width: 100%;
   overflow: scroll;
 }
 
 .infoContainer-cardContainer-card-vertical {
+  @include standard-flex(row);
   width: 100%;
   background-color: white;
   border: 1px solid black;
-  display: flex;
-  flex-direction: row;
   margin: 1%;
   overflow: scroll;
 }
 
 .card-today-hydration {
+  @include standard-flex(column);
   text-align: center;
-  background-color: #5BC8AC;
+  background-color: $hydration-color;
   height: auto;
   font-size: 1.5em;
   margin: .5em;
   font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
   width: 80%;
 }
 
 .card-today-sleep {
+  @include standard-flex(column);
   text-align: center;
-  background-color: #EC96A4;
+  background-color: $sleep-color;
   height: auto;
   font-size: 1.5em;
   margin: .5em;
   font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
   width: 80%;
 }
 
 .card-today-activity {
+  @include standard-flex(column);
   text-align: center;
-  background-color: #DFE166;
+  background-color: $activity-color;
   height: auto;
   font-size: 1.5em;
   margin: .3em;
   font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
   width: 40%;
 }
 
 .card-history-hydration {
+  @include standard-flex(column);
   text-align: center;
-  background-color: #5BC8AC;
+  background-color: $hydration-color;
   font-size: 1em;
   margin: .5em;
   font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   width: 50%;
 }
 
 .card-history-sleep {
+  @include standard-flex(column);
   text-align: center;
-  background-color: #EC96A4;
+  background-color: $sleep-color;
   font-size: 1em;
   margin: .5em;
   font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   width: 50%;
 }
 
 .card-history-activity {
+  @include standard-flex(column);
   text-align: center;
-  background-color: #DFE166;
+  background-color: $activity-color;
   font-size: 1em;
   margin: .5em;
   font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   width: 50%;
   height: 93%;
