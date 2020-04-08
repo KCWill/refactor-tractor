@@ -216,7 +216,7 @@ function addFriendGameInfo(id, activityInfo, userStorage, dateString, laterDateS
 
   $(makeFriendChallengeHTML(id,activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage))).insertAfter($('#friendChallengeListHistory'));
 
-  $(`THIS WEEK'S WINNER! ${avtivityInfo.showcaseWinner(user, dateString, userStorage)} steps`).insertAfter($(bigWinner));
+  $(`THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`).insertAfter($('#bigWinner'));
 
 }
 
