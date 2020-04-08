@@ -144,9 +144,9 @@ function makeRandomDate(userStorage, id, dataSet) {
 
 function addHydrationInfo(id, hydrationInfo, dateString, userStorage, laterDateString) {
   // hydrationToday.insertAdjacentHTML('afterBegin', `<p>You drank</p><p><span class="number">${hydrationInfo.calculateDailyOunces(id, dateString)}</span></p><p>oz water today.</p>`);
-  $(`<p>You drank</p><p><span class="number">${hydrationInfo.calculateDailyOunces(id, dateString)}</span></p><p>oz water today.</p>`).insertAfter($("#hydrationToday"));
+  $(`<p>You drank</p><p><span class="number">${Math.round(hydrationInfo.calculateDailyOunces(id, dateString))}</span></p><p>oz water today.</p>`).insertAfter($("#hydrationToday"));
   // hydrationAverage.insertAdjacentHTML('afterBegin', `<p>Your average water intake is</p><p><span class="number">${hydrationInfo.calculateAverageOunces(id)}</span></p> <p>oz per day.</p>`)
-  $(`<p>Your average water intake is</p><p><span class="number">${hydrationInfo.calculateAverageOunces(id)}</span></p> <p>oz per day.</p>`).insertAfter($("#hydrationAverage"));
+  $(`<p>Your average water intake is</p><p><span class="number">${Math.round(hydrationInfo.calculateAverageOunces(id))}</span></p> <p>oz per day.</p>`).insertAfter($("#hydrationAverage"));
   // hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateFirstWeekOunces(userStorage, id)));
   $(makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateFirstWeekOunces(userStorage, id))).insertAfter($("#hydrationThisWeek"));
   // hydrationEarlierWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateRandomWeekOunces(laterDateString, id, userStorage)));
