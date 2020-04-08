@@ -1,14 +1,20 @@
-class Activity {
+import activityData from './data/activity';
+import Utility from '../src/Utility'
+
+class Activity extends Utility{
   constructor(activityData) {
-    this.activityData = activityData
+    super(activityData)
+    this.activityData = activityData;
   }
   getMilesFromStepsByDate(id, date, userRepo) {
-    let userStepsByDate = this.activityData.find(data => id === data.userID && date === data.date);
-    return parseFloat(((userStepsByDate.numSteps * userRepo.strideLength) / 5280).toFixed(1));
+    let relevantData = 'numSteps';
+    let userStepsByDate = this.displayDailyData(id,date,relevantData);
+    return parseFloat(((userStepsByDate * userRepo.strideLength) / 5280).toFixed(1));
   }
   getActiveMinutesByDate(id, date) {
-    let userActivityByDate = this.activityData.find(data => id === data.userID && date === data.date);
-    return userActivityByDate.minutesActive;
+    let relevantData = 'minutesActive';
+    let userActiveMinByDate = this.displayDailyData(id,date,relevantData);
+    return userActiveMinByDate;
   }
   calculateActiveAverageForWeek(id, date, userRepo) {
     return parseFloat((userRepo.getWeekFromDate(date, id, this.activityData).reduce((acc, elem) => {
@@ -16,7 +22,8 @@ class Activity {
     }, 0) / 7).toFixed(1));
   }
   accomplishStepGoal(id, date, userRepo) {
-    let userStepsByDate = this.activityData.find(data => id === data.userID && date === data.date);
+    let relevantData = 'numSteps';
+    let userStepsByDate = this.displayDailyData(id,date,relevantData);
     if (userStepsByDate.numSteps === userRepo.dailyStepGoal) {
       return true;
     }
