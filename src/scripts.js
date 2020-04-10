@@ -8,6 +8,8 @@ import Activity from './Activity';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
 import UserRepo from './User-repo';
+import domUpdates from '../src/domUpdates';
+
 
 var historicalWeek = document.querySelectorAll('.historicalWeek');
 let userData;
@@ -36,7 +38,8 @@ function startApp() {
   let userNow = getUserById(userNowId, userRepo);
   let today = makeToday(userRepo, userNowId, hydrationData);
   let randomHistory = makeRandomDate(userRepo, userNowId, hydrationData);
-  historicalWeek.forEach(instance => instance.insertAdjacentHTML('afterBegin', `Week of ${randomHistory}`));
+  $('.historicalWeek').each((index, value) => {$(value).append(`Week of ${randomHistory}`);
+  });
   addInfoToSidebar(userNow, userRepo);
   addHydrationInfo(userNowId, hydrationRepo, today, userRepo, randomHistory);
   addSleepInfo(userNowId, sleepRepo, today, userRepo, randomHistory);
@@ -70,12 +73,13 @@ function addInfoToSidebar(user, userStorage) {
   $('#userAddress').text(user.address);
   $('#userEmail').text(user.email);
   $('#userStridelength').text(`Your stridelength is ${user.strideLength} meters.`);
-  $(makeFriendHTML(user, userStorage)).insertAfter($("#friendList"))
+  $(domUpdates.makeFriendHTML(user, userStorage)).insertAfter($("#friendList"));
+  // $(makeFriendHTML(user, userStorage)).insertAfter($("#friendList"))
 };
 
-function makeFriendHTML(user, userStorage) {
-  return user.getFriendsNames(userStorage).map(friendName => `<li class='historical-list-listItem'>${friendName}</li>`).join('');
-}
+// function makeFriendHTML(user, userStorage) {
+//   return user.getFriendsNames(userStorage).map(friendName => `<li class='historical-list-listItem'>${friendName}</li>`).join('');
+// }
 
 function makeWinnerID(activityInfo, user, dateString, userStorage) {
   return activityInfo.getWinnerId(user, dateString, userStorage)
@@ -149,8 +153,7 @@ function addFriendGameInfo(id, activityInfo, userStorage, dateString, laterDateS
   $(makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'numSteps'))).insertAfter($('#streakList'));
   $(makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'minutesActive'))).insertAfter($('#streakListMinutes'));
   $(makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage))).insertAfter($('#friendChallengeListHistory'));
-  $(`THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`).insertAfter($('#bigWinner'));
-
+  $('#bigWinner').text(`THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`);
 }
 
 function makeFriendChallengeHTML(id, activityInfo, userStorage, method) {
