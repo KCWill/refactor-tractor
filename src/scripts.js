@@ -8,6 +8,8 @@ import Activity from './Activity';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
 import UserRepo from './User-repo';
+import domUpdates from '../src/domUpdates';
+
 
 var historicalWeek = document.querySelectorAll('.historicalWeek');
 let userData;
@@ -71,12 +73,13 @@ function addInfoToSidebar(user, userStorage) {
   $('#userAddress').text(user.address);
   $('#userEmail').text(user.email);
   $('#userStridelength').text(`Your stridelength is ${user.strideLength} meters.`);
-  $(makeFriendHTML(user, userStorage)).insertAfter($("#friendList"))
+  $(domUpdates.makeFriendHTML(user, userStorage)).insertAfter($("#friendList"));
+  // $(makeFriendHTML(user, userStorage)).insertAfter($("#friendList"))
 };
 
-function makeFriendHTML(user, userStorage) {
-  return user.getFriendsNames(userStorage).map(friendName => `<li class='historical-list-listItem'>${friendName}</li>`).join('');
-}
+// function makeFriendHTML(user, userStorage) {
+//   return user.getFriendsNames(userStorage).map(friendName => `<li class='historical-list-listItem'>${friendName}</li>`).join('');
+// }
 
 function makeWinnerID(activityInfo, user, dateString, userStorage) {
   return activityInfo.getWinnerId(user, dateString, userStorage)
