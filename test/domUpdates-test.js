@@ -1,20 +1,45 @@
-const chai = require('chai')
-import { expect } from 'chai'
-import domUpdates from '../src/domUpdates';
-import User from '../src/User'
-import UserRepo from '../src/User-repo'
-const spies = require('chai-spies');
-chai.use(spies);
+const chai = require('chai');
+import { expect } from 'chai';
 
-describe('makeFriendHTML', () => {
+import User from '../src/User';
+import UserRepo from '../src/User-repo';
+import Hydration from '../src/Hydration';
+import Activity from '../src/Activity';
+import Sleep from '../src/Sleep';
+
+import index from '../src/index.js';
+import domUpdates from '../src/domUpdates';
+
+import hydrationData from '../src/data/hydration.js';
+import userData from '../src/data/users.js';
+import sleepData from '../src/data/sleep';
+import activityData from '../src/data/sleep';
+
+const spies = require('chai-spies');
+
+chai.use(spies);
+// const sandbox = chai.spy.sandbox();
+
+describe('DomUpdates', () => {
   let user1;
   let user2;
   let user3;
   let user4;
   let users;
   let userRepo;
-  beforeEach( () => {
-    // fetchUserData();
+  
+  beforeEach(() => {
+    chai.spy.on(domUpdates, ['addSleepInfo'], () => null);
+    
+    chai.spy.on(domUpdates, ['addHydrationInfo'], () => null);
+
+    chai.spy.on(domUpdates, ['addInfoToSidebar'], () => null);
+
+    chai.spy.on(domUpdates, ['addActivityInfo'], () => null);
+
+    chai.spy.on(domUpdates, ['addFriendGameInfo'], () => null);
+
+
     user1 = new User({
       id: 1,
       name: "Alex Roth",
@@ -54,10 +79,51 @@ describe('makeFriendHTML', () => {
     users = [user1, user2, user3, user4];
     userRepo = new UserRepo(users);
   });
-  it('should display friends information for each user', () => {
-    chai.spy.on(user1,'getFriendsNames');
-    domUpdates.makeFriendHTML(user1, userRepo);
-    expect(user1.getFriendsNames).to.have.been.called(1);
-    expect(user1.getFriendsNames).to.have.been.called.with(userRepo);
+
+  afterEach(() => {
+    chai.spy.restore(domUpdates);
   });
-});
+
+  it('should call addSleepInfo each time', () => {
+    let sleepInfo = new Sleep(sleepData);
+    let userRepo = new UserRepo(userData);
+
+    index.addSleepInfo(1, sleepInfo, userRepo, '2019/06/15', userRepo, '2019/06/22');
+
+    expect(domUpdates.addSleepInfo).to.be.called(1);
+  });
+
+  it('should call domUpdates.addHydrationInfo', () => {
+    let hydrationInfo = new Hydration(hydrationData);
+    let userRepo = new UserRepo(userData);
+
+    index.addHydrationInfo(1, hydrationInfo, '2019/06/15', userRepo, '2019/06/22');
+
+    expect(domUpdates.addHydrationInfo).to.be.called(1);
+  });
+
+  it('should call addInfoToSidebar', () => {
+    
+    index.addInfoToSidebar(user1, userRepo);
+    expect(domUpdates.addInfoToSidebar).to.be.called(1);
+  });
+
+  it('should call addActivityInfo', () => {
+
+    let activityInfo = new Activity(activityData);
+
+    index.addActivityInfo(1, activityInfo, '2019/06/15', userRepo, '2019/06/22')
+
+    expect(domUpdates.addActivityInfo).to.be.called(1);
+  });
+
+  it('should call addFriendGameInfo', () => {
+
+    let activityInfo = new Activity(activityData);
+
+    index.addFriendGameInfo(1, activityInfo, userRepo, '2019/06/15', '2019/06/22', user1);
+
+    expect(domUpdates.addFriendGameInfo).to.be.called(1);
+  });
+
+})

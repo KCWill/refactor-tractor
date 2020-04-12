@@ -1,6 +1,6 @@
 import sleepData from './data/sleep';
-import hydrationData from './data/sleep';
 import activityData from './data/sleep';
+import hydrationData from './data/sleep';
 
 
 class Utility {
@@ -16,8 +16,12 @@ class Utility {
   }
 
   displayDailyData(id, date, relevantData) {
-    return this.dataSet.find((data) => id === data.userID && date === data.date)[relevantData];
-    return findDailyData[relevantData];
+    let dataRow = this.dataSet.find((data) => id === data.userID && date === data.date);
+    if (!dataRow) {
+      // Invalid data, try again
+      alert(`Data does not exist for ${id} ${date}`);
+    }
+    return dataRow[relevantData];
   }
 
   calculateAverage(relevantData) {
