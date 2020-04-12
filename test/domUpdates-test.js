@@ -1,19 +1,27 @@
 const chai = require('chai')
 import { expect } from 'chai'
 import domUpdates from '../src/domUpdates';
-import User from '../src/User'
-import UserRepo from '../src/User-repo'
-const spies = require('chai-spies');
-chai.use(spies);
+import User from '../src/User';
+import UserRepo from '../src/User-repo';
+import scripts from '../src/scripts.js';
 
-describe('makeFriendHTML', () => {
+const spies = require('chai-spies');
+
+chai.use(spies);
+// const sandbox = chai.spy.sandbox();
+
+describe('DomUpdates', () => {
+  let domUpdates;
   let user1;
   let user2;
   let user3;
   let user4;
   let users;
   let userRepo;
-  beforeEach( () => {
+  
+  beforeEach(() => {
+    domUpdates = {};
+    chai.spy.on(domUpdates, ['makeFriendHTML']);
     // fetchUserData();
     user1 = new User({
       id: 1,
@@ -54,10 +62,25 @@ describe('makeFriendHTML', () => {
     users = [user1, user2, user3, user4];
     userRepo = new UserRepo(users);
   });
-  it('should display friends information for each user', () => {
-    chai.spy.on(user1,'getFriendsNames');
+  afterEach(() => {
+    chai.spy.restore(domUpdates);
+  });
+
+  it('should call makeFriendHTML each time', () => {
     domUpdates.makeFriendHTML(user1, userRepo);
     expect(user1.getFriendsNames).to.have.been.called(1);
     expect(user1.getFriendsNames).to.have.been.called.with(userRepo);
   });
-});
+
+  it.only('should do something', () => {
+    let cow = scripts.pickUser();
+    console.log(cow)
+  });
+
+// it('should display user name', () => {
+//   chai.spy.on(domUpdates,'addInfoToSidebar');
+//   domUpdates.addInfoToSidebar(user2, userRepo);
+//   expect(user2.getFirstName).to.have.been.called(1);
+//   expect(user2.getFirstName).to.have.been.called.with();
+// });
+})
