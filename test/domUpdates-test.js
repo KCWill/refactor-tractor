@@ -1,9 +1,19 @@
-const chai = require('chai')
-import { expect } from 'chai'
-import domUpdates from '../src/domUpdates';
+const chai = require('chai');
+import { expect } from 'chai';
+
 import User from '../src/User';
 import UserRepo from '../src/User-repo';
-import scripts from '../src/scripts.js';
+import Hydration from '../src/Hydration';
+import Activity from '../src/Activity';
+import Sleep from '../src/Sleep';
+
+import index from '../src/index.js';
+import domUpdates from '../src/domUpdates';
+
+import hydrationData from '../src/data/hydration.js';
+import userData from '../src/data/users.js';
+import sleepData from '../src/data/sleep';
+import activityData from '../src/data/sleep';
 
 const spies = require('chai-spies');
 
@@ -11,7 +21,6 @@ chai.use(spies);
 // const sandbox = chai.spy.sandbox();
 
 describe('DomUpdates', () => {
-  let domUpdates;
   let user1;
   let user2;
   let user3;
@@ -20,9 +29,10 @@ describe('DomUpdates', () => {
   let userRepo;
   
   beforeEach(() => {
-    domUpdates = {};
-    chai.spy.on(domUpdates, ['makeFriendHTML']);
-    // fetchUserData();
+    chai.spy.on(domUpdates, ['addSleepInfo'], () => null);
+    
+    chai.spy.on(domUpdates, ['addHydrationInfo'], () => null);
+
     user1 = new User({
       id: 1,
       name: "Alex Roth",
@@ -62,19 +72,27 @@ describe('DomUpdates', () => {
     users = [user1, user2, user3, user4];
     userRepo = new UserRepo(users);
   });
+
   afterEach(() => {
     chai.spy.restore(domUpdates);
   });
 
-  it('should call makeFriendHTML each time', () => {
-    domUpdates.makeFriendHTML(user1, userRepo);
-    expect(user1.getFriendsNames).to.have.been.called(1);
-    expect(user1.getFriendsNames).to.have.been.called.with(userRepo);
+  it('should call addSleepInfo each time', () => {
+    let sleepInfo = new Sleep(sleepData);
+    let userRepo = new UserRepo(userData);
+
+    index.addSleepInfo(1, sleepInfo, userRepo, '2019/06/15', userRepo, '2019/06/22');
+
+    expect(domUpdates.addSleepInfo).to.be.called(1);
   });
 
-  it.only('should do something', () => {
-    let cow = scripts.pickUser();
-    console.log(cow)
+  it('should call domUpdates.addHydrationInfo', () => {
+    let hydrationInfo = new Hydration(hydrationData);
+    let userRepo = new UserRepo(userData);
+
+    index.addHydrationInfo(1, hydrationInfo, '2019/06/15', userRepo, '2019/06/22');
+
+    expect(domUpdates.addHydrationInfo).to.be.called(1);
   });
 
 // it('should display user name', () => {

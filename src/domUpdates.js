@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import scripts from '../src/scripts'
 
 const domUpdates = {
 
