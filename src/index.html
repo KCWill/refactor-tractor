@@ -48,12 +48,12 @@
     <section class="body-main-infoContainter">
       <section class="main-column-hydration">
         <section class="infoContainer-cardContainer-card-horizontal">
-          <div class="card-today-hydration">
+          <section class="card-today-hydration">
             <p id="hydrationToday"></p>
-          </div>
-          <div class="card-today-hydration">
+          </section>
+          <section class="card-today-hydration">
             <p id="hydrationAverage"></p>
-          </div>
+          </section>
         </section>
         <section class="infoContainer-cardContainer-card-vertical">
           <div class="card-history-hydration">
@@ -70,6 +70,20 @@
               <!-- Hydration week list goes here -->
             </ul>
           </div>
+        </section>
+        <section class="hydration-input-container">
+          <section class="hydration-input">
+            <h3>Input Hydration Data</h3>
+            <form id="hydration-form">
+              <label for="date">Enter User ID </label>
+              <input type="text" id="hydration-Id" required>
+              <label for="date">Date: </label>
+              <input type="text" id="date-hydration" required>
+              <label for="ounces-drank">Ounces Drank: </label>
+              <input type="text" id="ounces" required>
+              <input id="hydration-submit" type="submit" value="Submit">
+            </form>
+          </section>
         </section>
       </section>
       <section class="main-column-activity">
@@ -133,6 +147,22 @@
             </div>
           </section>
         </section>
+        <section class="activity-input-container">
+          <h3>Input Activity Data</h3>
+          <section class="activity-input">
+            <form class="activity-form">
+              <label for="total-steps">Date: </label>
+              <input type="text" id="date-activity-picker" required>
+              <label for="daily-steps">Steps Taken: </label>
+              <input type="text" id="steps" required>
+              <label for="minutes-active">Minutes Active: </label>
+              <input type="text" id="minutes-active" required>
+              <label for="minutes-active">Flights of Stairs: </label>
+              <input type="text" id="flights-of-stairs" required>
+              <input id="activity-submit" type="submit" value="Submit" />
+            </form>
+          </section>
+        </section>
       </section>
       <section class="main-column-sleep">
         <section class="infoContainer-cardContainer-card-horizontal">
@@ -161,6 +191,20 @@
               <!-- Sleep week list goes here -->
             </ul>
           </div>
+        </section>
+        <section class="sleep-input-container">
+          <h3>Input Sleep Data</h3>
+          <section class="sleep-input">
+            <form class="sleep-form">
+                <label for="sleep-date">Date: </label>
+              <input type="text" id="date-activity" value="" /><br>
+                <label for="hours-slept">Hours Slept: </label>
+              <input type="text" id="hours-slept" value="" /><br>
+              <label for="sleep-quality">Sleep Quality: </label>
+              <input type="text" id="minutes-active" value="" /><br>
+              <input id="activity-submit" type="submit" value="Submit" />
+            </form>
+          </section>
         </section>
       </section>
     </section>

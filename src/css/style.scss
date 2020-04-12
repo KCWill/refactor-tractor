@@ -1,3 +1,5 @@
+@import '~js-datepicker/src/datepicker';
+
 $hydration-color: #5BC8AC;
 $sleep-color: #EC96A4;
 $activity-color: #DFE166;
@@ -15,25 +17,25 @@ $activity-color: #DFE166;
 }
 
 body {
-  font-family: 'Open Sans';
   margin: 0;
   background-color: #4d4e4f;
   height: auto;
+  font-family: 'Open Sans';
 }
 
 h1 {
-  text-align: center;
-  color: #ffffff;
-  height: 80px;
   padding-top: 10px;
+  height: 80px;
+  color: #ffffff;
+  text-align: center;
 }
 
-button {
-  background-color: black;
-  &:hover{
-    background-color: complement(black);
-  }
-}
+// button {
+//   background-color: black;
+//   &:hover{
+//     background-color: complement(black);
+//   }
+// }
 
 .main {
   @include standard-flex(row);
@@ -49,10 +51,10 @@ button {
 .body-sidebar-sidebarContainer {
   @include simple-border(black);
   @include standard-flex(column);
-  background-color: #9A9DAB;
   align-items: center;
-  text-align: center;
+  background-color: #9A9DAB;
   overflow: scroll;
+  text-align: center;
 }
 
 .sidebar-header-name {
@@ -60,30 +62,30 @@ button {
 }
 
 .sidebar-header-userInfo {
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 1.2em;
   margin: .5em .5em .5em .5em;
   width: inherit;
+  font-family: sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 .sidebar-header-line {
-  color: #ffffff;
-  border: 1px solid black;
   margin: 1em 1em 0 1em;
-  height: 0;
+  border: 1px solid black;
   width: 80%;
+  height: 0;
+  color: #ffffff;
 }
 
 .sidebar-header-userImage {
+  justify-content: center;
+  margin: 4px 2px 2px 2px;
+  border-width: 1px;
+  border-style: solid;
   border-radius: 50%;
   border-color: black;
-  border-style: solid;
-  border-width: 1px;
-  height: 200px;
   width: 200px;
-  margin: 4px 2px 2px 2px;
-  justify-content: center;
+  height: 200px;
 }
 
 .sidebar-body-friendContainer {
@@ -96,9 +98,9 @@ button {
 
 .body-main-infoContainter {
   @include standard-flex(column);
-  width: 100%;
-  border: 1px solid black;
   margin: 0 0 1em;
+  border: 1px solid black;
+  width: 100%;
   overflow: scroll;
 }
 
@@ -120,11 +122,11 @@ button {
 .infoContainer-cardContainer-card-horizontal {
   @include simple-border(black);
   @include standard-flex(column);
-  width: 100%;
-  background-color: white;
   align-items: center;
-  margin: 1%;
   justify-content: space-between;
+  margin: 1%;
+  background-color: white;
+  width: 100%;
 }
 
 .horizontalCard-activity-container {
@@ -136,117 +138,194 @@ button {
 
 .infoContainer-cardContainer-card-vertical {
   @include standard-flex(row);
-  width: 100%;
-  background-color: white;
-  border: 1px solid black;
   margin: 1%;
+  border: 1px solid black;
+  background-color: white;
+  width: 100%;
   overflow: scroll;
 }
 
 .card-today-hydration {
   @include standard-flex(column);
-  text-align: center;
-  background-color: $hydration-color;
-  height: auto;
-  font-size: 1.5em;
-  margin: .5em;
-  font-family: sans-serif;
   justify-content: space-between;
+  margin: .5em;
+  background-color: $hydration-color;
   width: 80%;
+  height: auto;
+  font-family: sans-serif;
+  font-size: 1.5em;
+  text-align: center;
 }
 
 .card-today-sleep {
   @include standard-flex(column);
-  text-align: center;
-  background-color: $sleep-color;
-  height: auto;
-  font-size: 1.5em;
-  margin: .5em;
-  font-family: sans-serif;
   justify-content: space-between;
+  margin: .5em;
+  background-color: $sleep-color;
   width: 80%;
+  height: auto;
+  font-family: sans-serif;
+  font-size: 1.5em;
+  text-align: center;
 }
 
 .card-today-activity {
   @include standard-flex(column);
-  text-align: center;
-  background-color: $activity-color;
-  height: auto;
-  font-size: 1.5em;
-  margin: .3em;
-  font-family: sans-serif;
   justify-content: space-between;
+  margin: .3em;
+  background-color: $activity-color;
   width: 40%;
+  height: auto;
+  font-family: sans-serif;
+  font-size: 1.5em;
+  text-align: center;
 }
 
 .card-history-hydration {
   @include standard-flex(column);
-  text-align: center;
-  background-color: $hydration-color;
-  font-size: 1em;
-  margin: .5em;
-  font-family: sans-serif;
   justify-content: flex-start;
+  margin: .5em;
+  background-color: $hydration-color;
   width: 50%;
+  font-family: sans-serif;
+  font-size: .8em;
+  text-align: center;
 }
 
 .card-history-sleep {
   @include standard-flex(column);
-  text-align: center;
-  background-color: $sleep-color;
-  font-size: 1em;
-  margin: .5em;
-  font-family: sans-serif;
   justify-content: flex-start;
+  margin: .5em;
+  background-color: $sleep-color;
   width: 50%;
+  font-family: sans-serif;
+  font-size: 1em;
+  text-align: center;
 }
 
 .card-history-activity {
   @include standard-flex(column);
-  text-align: center;
-  background-color: $activity-color;
-  font-size: 1em;
-  margin: .5em;
-  font-family: sans-serif;
   justify-content: flex-start;
+  margin: .5em;
+  background-color: $activity-color;
   width: 50%;
   height: 93%;
   overflow: scroll;
+  font-family: sans-serif;
+  font-size: 1em;
+  text-align: center;
 }
 
 .number {
-  font-size: 2em;
-  font-weight: bolder;
   color: #4d4e4f;
   font-kerning: normal;
+  font-size: 2em;
+  font-weight: bolder;
 }
 
 .historicalWeek {
-  text-align: center;
-  font-size: 1em;
-  font-weight: bolder;
   margin: .5em;
   color: black;
+  font-size: 1em;
+  font-weight: bolder;
+  text-align: center;
 }
 
 .thisWeek {
-  text-align: center;
-  font-size: 1em;
-  font-weight: bolder;
   margin: .5em;
   color: black;
+  font-size: 1em;
+  font-weight: bolder;
+  text-align: center;
 }
 
 .card-vertical-list {
-  list-style-type: none;
-  font-weight: lighter;
-  font-style: italic;
   padding-left: 0;
   font-size: 1em;
+  font-style: italic;
+  font-weight: lighter;
+  list-style-type: none;
 }
 
 .historical-list-listItem {
   padding: .3em;
-  font-weight: bold;
   font-family: sans-serif;
+  font-weight: bold;
+}
+.hydration-input {
+  @include standard-flex(column);
+  justify-content: flex-start;
+  margin: 1em;
+  background-color: $hydration-color;
+  height: 100%;
+  font-family: sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+.hydration-input-container {
+  @include simple-border(black);
+  @include standard-flex(column);
+  align-items: center;
+  justify-content: space-between;
+  margin: 1%;
+  background-color: white;
+  width: 50%;
+}
+
+.activity-input-container {
+  @include simple-border(black);
+  @include standard-flex(column);
+  align-items: center;
+  justify-content: space-between;
+  margin: 1%;
+  background-color: white;
+  width: 50%;
+}
+
+.sleep-input-container {
+  @include simple-border(black);
+  @include standard-flex(column);
+  align-items: center;
+  justify-content: space-between;
+  margin: 1%;
+  background-color: white;
+  width: 50%;
+}
+
+.sleep-input {
+  @include standard-flex(column);
+  justify-content: flex-start;
+  margin: .5em;
+  background-color: $sleep-color;
+  height: 100%;
+  font-family: sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+
+.activity-input-container {
+  @include simple-border(black);
+  @include standard-flex(column);
+  align-items: center;
+  justify-content: space-between;
+  margin: 1%;
+  background-color: white;
+  width: 50%;
+}
+
+.activity-input {
+  @include standard-flex(column);
+  justify-content: flex-start;
+  margin: .5em;
+  background-color: $activity-color;
+  height: 100%;
+  font-family: sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+
+#hydration-submit {
+  background-color: white;
+  width: 50%;
+  height: 3em;
 }
