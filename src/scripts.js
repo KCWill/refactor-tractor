@@ -4,6 +4,8 @@ import './images/person walking on path.jpg';
 import './images/The Rock.jpg';
 import index from './index';
 
+const datepicker = require('js-datepicker')
+
 let userData;
 let sleepData;
 let activityData;
@@ -47,3 +49,19 @@ fetchUserData().then(data => {
   index.startApp(userData, sleepData, activityData, hydrationData);
 });
 // .catch(error => console.log(error.message))
+
+const hydrationDate = datepicker('#date-hydration', {
+  formatter: (input, date, instance) => {
+    const value = date.toISOString().slice(0, 10).replace(/-/g, "/");
+    input.value = value;
+  }
+})
+
+$('#hydration-form').submit((event) => {
+  event.preventDefault();
+  let hydrationForm = new FormData();
+  hydrationForm.append('userID', +`${$('#hydration-Id').val()}`);
+  hydrationForm.append('date', `${$('#date-hydration').val()}`);
+  hydrationForm.append('numOunces', +`${$('#ounces').val()}`);
+  console.log(...hydrationForm);
+})
