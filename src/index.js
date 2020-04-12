@@ -44,93 +44,60 @@ const index = {
 
   makeUsers(array) {
     this.userData.forEach(function(dataItem) {
+      //need this.userdata to be something so we can test it
       let user = new User(dataItem);
       array.push(user);
     })
-  },//stay
+  }, //different because it doesn't do anything domUpdates
 
   pickUser() {
     let min = 1;
     let max = 50;
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  },//stay
+  }, //different because it doesn't do anything domUpdates
 
   getUserById(id, listRepo) {
     return listRepo.getDataFromID(id);
-  },//stay
+  }, //different because it doesn't do anything domUpdates
 
   addInfoToSidebar(user, userStorage) {
     domUpdates.addInfoToSidebar(user, userStorage);
-  },
+  }, //test passing
 
   makeWinnerID(activityInfo, user, dateString, userStorage) {
     return activityInfo.getWinnerId(user, dateString, userStorage)
-  }, //stay in index
+  }, //doesn't do anything in domUpdates
 
   makeToday(userStorage, id, dataSet) {
     var sortedArray = userStorage.makeSortedUserArray(id, dataSet);
     if (!sortedArray[0]) {
-      // Invalid data try again
+      // Invalid data, try again
       return this.makeToday(userStorage, id, dataSet);
     }
     return sortedArray[0].date;
-  }, //stay in index
+  }, //doesn't do anything in domUpdates
 
   makeRandomDate(userStorage, id, dataSet) {
     var sortedArray = userStorage.makeSortedUserArray(id, dataSet);
-    
     return sortedArray[Math.floor(Math.random() * sortedArray.length - 1)].date
-  }, //stay in index
+  }, //doesn't do anything in domUpdates
 
   addHydrationInfo(id, hydrationInfo, dateString, userStorage, laterDateString) {
     domUpdates.addHydrationInfo(id, hydrationInfo, dateString, userStorage, laterDateString);
   }, //test passing
 
-  // makeHydrationHTML(id, hydrationInfo, userStorage, method) {
-  //   alert(1)
-  //   debugger
-  //   domUpdates.makeHydrationHTML(id, hydrationInfo, userStorage, method);
-  // }, doesn't seem to be getting called
-
   addSleepInfo(id, sleepInfo, dateString, userStorage, laterDateString) {
     domUpdates.addSleepInfo(id, sleepInfo, dateString, userStorage, laterDateString);
   }, //test passing
 
-  makeSleepHTML(id, sleepInfo, userStorage, method) {
-    domUpdates.makeSleepHTML(id, sleepInfo, userStorage, method);
-  },
-
-  makeSleepQualityHTML(id, sleepInfo, userStorage, method) {
-    domUpdates.makeSleepQualityHTML(id, sleepInfo, userStorage, method);
-  },
-
   addActivityInfo(id, activityInfo, dateString, userStorage, laterDateString, user, winnerId) {
     domUpdates.addActivityInfo(id, activityInfo, dateString, userStorage, laterDateString, user, winnerId);
-  },
-
-  makeStepsHTML(id, activityInfo, userStorage, method) {
-    domUpdates.makeStepsHTML(id, activityInfo, userStorage, method);
-  },
-
-  makeStairsHTML(id, activityInfo, userStorage, method) {
-    domUpdates.makeStairsHTML(id, activityInfo, userStorage, method);
-  },
-
-  makeMinutesHTML(id, activityInfo, userStorage, method) {
-    domUpdates.makeMinutesHTML(id, activityInfo, userStorage, method);
-  },
+  }, // test passing
 
   addFriendGameInfo(id, activityInfo, userStorage, dateString, laterDateString, user) {
     domUpdates.addFriendGameInfo(id, activityInfo, userStorage, dateString, laterDateString, user);
-  },
+  } // test passing
 
-  makeFriendChallengeHTML(id, activityInfo, userStorage, method) {
-    domUpdates.makeFriendChallengeHTML(id, activityInfo, userStorage, method);
-  },
-
-  makeStepStreakHTML(id, activityInfo, userStorage, method) {
-    domUpdates.makeStepStreakHTML(id, activityInfo, userStorage, method)
-  }
 };
 
 export default index;

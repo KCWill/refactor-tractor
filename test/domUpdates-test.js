@@ -33,6 +33,13 @@ describe('DomUpdates', () => {
     
     chai.spy.on(domUpdates, ['addHydrationInfo'], () => null);
 
+    chai.spy.on(domUpdates, ['addInfoToSidebar'], () => null);
+
+    chai.spy.on(domUpdates, ['addActivityInfo'], () => null);
+
+    chai.spy.on(domUpdates, ['addFriendGameInfo'], () => null);
+
+
     user1 = new User({
       id: 1,
       name: "Alex Roth",
@@ -95,10 +102,28 @@ describe('DomUpdates', () => {
     expect(domUpdates.addHydrationInfo).to.be.called(1);
   });
 
-// it('should display user name', () => {
-//   chai.spy.on(domUpdates,'addInfoToSidebar');
-//   domUpdates.addInfoToSidebar(user2, userRepo);
-//   expect(user2.getFirstName).to.have.been.called(1);
-//   expect(user2.getFirstName).to.have.been.called.with();
-// });
+  it('should call addInfoToSidebar', () => {
+    
+    index.addInfoToSidebar(user1, userRepo);
+    expect(domUpdates.addInfoToSidebar).to.be.called(1);
+  });
+
+  it('should call addActivityInfo', () => {
+
+    let activityInfo = new Activity(activityData);
+
+    index.addActivityInfo(1, activityInfo, '2019/06/15', userRepo, '2019/06/22')
+
+    expect(domUpdates.addActivityInfo).to.be.called(1);
+  });
+
+  it('should call addFriendGameInfo', () => {
+
+    let activityInfo = new Activity(activityData);
+
+    index.addFriendGameInfo(1, activityInfo, userRepo, '2019/06/15', '2019/06/22', user1);
+
+    expect(domUpdates.addFriendGameInfo).to.be.called(1);
+  });
+
 })
