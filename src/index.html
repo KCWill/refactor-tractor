@@ -75,8 +75,8 @@
           <section class="hydration-input">
             <h3>Input Hydration Data</h3>
             <form id="hydration-form">
-              <label for="date">Enter User ID </label>
-              <input type="text" id="hydration-Id" required>
+              <label for="userid">Enter User ID </label>
+              <input type="text" id="hydration-Id" label="Enter User ID 1-50" required>
               <label for="date">Date: </label>
               <input type="text" id="date-hydration" required>
               <label for="ounces-drank">Ounces Drank: </label>
@@ -148,9 +148,11 @@
           </section>
         </section>
         <section class="activity-input-container">
-          <h3>Input Activity Data</h3>
           <section class="activity-input">
-            <form class="activity-form">
+            <h3>Input Activity Data</h3>
+            <form id="activity-form">
+              <label for="date">Enter User ID </label>
+              <input type="userid" id="activity-Id" label="Enter User ID 1-50" required>
               <label for="total-steps">Date: </label>
               <input type="text" id="date-activity-picker" required>
               <label for="daily-steps">Steps Taken: </label>
@@ -159,7 +161,7 @@
               <input type="text" id="minutes-active" required>
               <label for="minutes-active">Flights of Stairs: </label>
               <input type="text" id="flights-of-stairs" required>
-              <input id="activity-submit" type="submit" value="Submit" />
+              <input id="activity-submit" type="submit" value="Submit">
             </form>
           </section>
         </section>
@@ -193,16 +195,18 @@
           </div>
         </section>
         <section class="sleep-input-container">
-          <h3>Input Sleep Data</h3>
           <section class="sleep-input">
-            <form class="sleep-form">
-                <label for="sleep-date">Date: </label>
-              <input type="text" id="date-activity" value="" /><br>
-                <label for="hours-slept">Hours Slept: </label>
-              <input type="text" id="hours-slept" value="" /><br>
+            <h3>Input Sleep Data</h3>
+            <form id="sleep-form">
+              <label for="date">Enter User ID </label>
+              <input type="text" id="sleep-id" label="Enter User ID 1-50" required>
+              <label for="sleep-date">Date: </label>
+              <input type="text" id="date-sleep" required>
+              <label for="hours-slept">Hours Slept: </label>
+              <input type="text" id="hours-slept" required>
               <label for="sleep-quality">Sleep Quality: </label>
-              <input type="text" id="minutes-active" value="" /><br>
-              <input id="activity-submit" type="submit" value="Submit" />
+              <input type="text" id="sleep-quality" required>
+              <input id="activity-submit" type="submit">
             </form>
           </section>
         </section>
