@@ -59,7 +59,7 @@ describe ('Utility', () => {
 
   it('should calculate the average', () => {
 
-    // expect(utility.calculateAverage('sleepQuality')).to.eql()
+    expect(utility.calculateAverage('sleepQuality')).to.eql(2.9000000000000004)
   })
 
 
