@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { expect } from 'chai';
 
 import UserRepo from '../src/User-repo';
@@ -34,7 +35,6 @@ describe('User Repo', function() {
   });
 
   it('should be a function', function() {
-    const userRepo = new UserRepo();
 
     expect(UserRepo).to.be.a('function');
   });
@@ -56,8 +56,6 @@ describe('User Repo', function() {
     });
     const users = [user1];
     const userRepo = new UserRepo(users);
-
-    // console.log('here: ', userRepo.users[0]);
 
     expect(userRepo.users[0].id).to.equal(1);
   });
@@ -484,7 +482,6 @@ describe('User Repo', function() {
       expect(userRepo.getWeekFromDate('2019/09/18', 4, hydrationData)[3].date).to.eql("2019/09/15");
     });
     it('should get a week of data for all users in data set', function() {
-      // console.log(userRepo.chooseWeekDataForAllUsers(sleepData, '2019/06/19'));
       expect(userRepo.chooseWeekDataForAllUsers(hydrationData, '2019/09/17')[2].date).to.eql("2019/09/15");
       expect(userRepo.chooseWeekDataForAllUsers(hydrationData, '2019/09/17')[2].userID).to.eql(4);
       expect(userRepo.chooseWeekDataForAllUsers(hydrationData, '2019/09/17')[3].date).to.eql("2019/09/17");

@@ -1,4 +1,4 @@
-import activityData from './data/activity';
+/* eslint-disable max-len */
 import Utility from '../src/Utility'
 
 class Activity extends Utility {
@@ -52,8 +52,8 @@ class Activity extends Utility {
     return userData.find(data => data.date === date)[relevantData];
   }
 
-  userDataForWeek(id, date, userRepo, releventData) {
-    return userRepo.getWeekFromDate(date, id, this.activityData).map((data) => `${data.date}: ${data[releventData]}`);
+  userDataForWeek(id, date, userRepo, relevantData) {
+    return userRepo.getWeekFromDate(date, id, this.activityData).map((data) => `${data.date}: ${data[relevantData]}`);
   }
 
   // Friends
@@ -108,7 +108,5 @@ class Activity extends Utility {
     return parseInt(keysList[0].join(''))
   }
 }
-
-
 
 export default Activity;
