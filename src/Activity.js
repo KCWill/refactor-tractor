@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import activityData from './data/activity';
 import Utility from '../src/Utility'
 
@@ -108,7 +109,5 @@ class Activity extends Utility {
     return parseInt(keysList[0].join(''))
   }
 }
-
-
 
 export default Activity;

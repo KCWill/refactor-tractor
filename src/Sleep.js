@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import sleepData from './data/sleep';
 import Utility from '../src/Utility'
 

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import $ from 'jquery';
 
 const domUpdates = {
@@ -31,10 +32,9 @@ const domUpdates = {
   addSleepInfo(id, sleepInfo, dateString, userStorage, laterDateString) {
     $(`<p>You slept</p> <p><span class="number">${sleepInfo.calculateDailySleep(id, dateString)}</span></p> <p>hours today.</p>`).insertAfter($("#sleepToday"));
     $(`<p>Your sleep quality was</p> <p><span class="number">${sleepInfo.calculateDailySleepQuality(id, dateString)}</span></p><p>out of 5.</p>`).insertAfter($("#sleepQualityToday"));
-    $(`<p>The average user's sleep quality is</p> <p><span class="number">${Math.round(sleepInfo.calculateAllUserSleepQuality() *100)/100}</span></p><p>out of 5.</p>`).insertAfter($("#avUserSleepQualityToday"));
+    $(`<p>The average user's sleep quality is</p> <p><span class="number">${Math.round(sleepInfo.calculateAllUserSleepQuality() * 100) / 100}</span></p><p>out of 5.</p>`).insertAfter($("#avUserSleepQualityToday"));
     $(this.makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(dateString, id, userStorage))).insertAfter($("#sleepThisWeek"));
     $('#sleepEarlierWeek').html(this.makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(laterDateString, id, userStorage)));
-    // this.sleepEarlierWeek.insertAdjacentHTML('afterBegin', this.makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(laterDateString, id, userStorage)));
   },
 
   makeSleepHTML(id, sleepInfo, userStorage, method) {
