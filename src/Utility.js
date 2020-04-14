@@ -1,8 +1,3 @@
-import sleepData from './data/sleep';
-import activityData from './data/activity';
-import hydrationData from './data/hydration';
-
-
 class Utility {
   constructor(dataSet) {
     this.dataSet = dataSet;
@@ -26,7 +21,8 @@ class Utility {
 
   calculateAverage(relevantData) {
     let relevantDataSum = this.dataSet.reduce(function(sumSoFar, dataItem) {
-      sumSoFar += dataItem.relevantData;
+    
+      sumSoFar += dataItem[relevantData];
       return sumSoFar;
     }, 0)
     return relevantDataSum / this.dataSet.length

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { expect } from 'chai';
 import Activity from '../src/Activity';
 import UserRepo from '../src/User-repo';
@@ -178,7 +179,7 @@ describe('Activity', function() {
 
     user3 = new User({
       id: 3,
-      name: "Jerry Seinfield",
+      name: "Jerry Seinfeld",
       address: "32 Baker Street, Denver CO 12345",
       email: "jseinfield@gmail.com",
       strideLength: 3.8,
@@ -309,7 +310,6 @@ describe('Friend Activity', function() {
   let user2;
   let user3;
   let user4;
-  let user5;
   let users;
   let userRepo;
 
@@ -543,7 +543,7 @@ describe('Friend Activity', function() {
     ]);
   });
 
-  it('should get a users ranked friendslist activity for a chosen week with names', function() {
+  it('should get a users ranked friends list activity for a chosen week with names', function() {
     expect(activity.showChallengeListAndWinner(user4, "2019/06/15", userRepo)).to.eql([
       'Allie McCarthy: 9552', 'Alex Roth: 7475.5'
     ])

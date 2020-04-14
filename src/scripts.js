@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './css/base.scss';
 import './css/style.scss';
 import './images/person walking on path.jpg';
@@ -14,19 +15,19 @@ let hydrationData;
 function fetchUserData() {
   let fetchedUserData =
     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData')
-    .then(response => response.json());
+      .then(response => response.json());
 
   let fetchedSleepData =
     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData')
-    .then(response => response.json());
+      .then(response => response.json());
 
   let fetchedActivityData =
     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData')
-    .then(response => response.json());
+      .then(response => response.json());
 
   let fetchedHydrationData =
     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData')
-    .then(response => response.json());
+      .then(response => response.json());
 
   return Promise.all([fetchedUserData, fetchedSleepData, fetchedActivityData, fetchedHydrationData])
     .then(response => {
@@ -146,15 +147,15 @@ $('#sleep-form').submit((event) => {
 function postData(url, form) {
   if (form.userID < 51 && form.userID > 0) {
     fetch(url, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(form),
-      })
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(form),
+    })
       .then(response => response.json())
       .then(data => console.log(data))
-      .catch(err => console.error(err))
+      .catch(err => console.log(err))
   }
   $(".datepicker").attr("autocomplete", "off");
 }
