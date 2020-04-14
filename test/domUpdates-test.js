@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const chai = require('chai');
 import { expect } from 'chai';
 
@@ -18,12 +19,10 @@ import activityData from '../src/data/sleep';
 const spies = require('chai-spies');
 
 chai.use(spies);
-// const sandbox = chai.spy.sandbox();
 
 describe('DomUpdates', () => {
   let user1;
   let user2;
-  let user3;
   let user4;
   let users;
   let userRepo;
@@ -122,7 +121,6 @@ describe('DomUpdates', () => {
     let activityInfo = new Activity(activityData);
 
     index.addFriendGameInfo(1, activityInfo, userRepo, '2019/06/15', '2019/06/22', user1);
-
     expect(domUpdates.addFriendGameInfo).to.be.called(1);
   });
 

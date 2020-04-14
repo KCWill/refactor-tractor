@@ -9,14 +9,12 @@ const domUpdates = {
   addInfoToSidebar(user, userStorage) {
     $('#sidebarName').text(user.name);
     $('#headerText').text(`${user.getFirstName()}'s Activity Tracker`);
-    // header.innerText = (`${user.getFirstName()}'s Activity Tracker`)
     $('#stepGoalCard').text(`Your daily step goal is ${user.dailyStepGoal}.`);
     $('#avStepGoalCard').text(`The average daily step goal is ${userStorage.calculateAverageStepGoal()}`);
     $('#userAddress').text(user.address);
     $('#userEmail').text(user.email);
-    $('#userStridelength').text(`Your stridelength is ${user.strideLength} meters.`);
+    $('#userStridelength').text(`Your stride length is ${user.strideLength} meters.`);
     $(this.makeFriendHTML(user, userStorage)).insertAfter($("#friendList"));
-    // $(makeFriendHTML(user, userStorage)).insertAfter($("#friendList"))
   },
   addHydrationInfo(id, hydrationInfo, dateString, userStorage, laterDateString) {
     $(`<p>You drank</p><p><span class="number">${Math.round(hydrationInfo.calculateDailyOunces(id, dateString))}</span></p><p>oz water today.</p>`).insertAfter($("#hydrationToday"));
@@ -85,6 +83,5 @@ const domUpdates = {
   makeStepStreakHTML(id, activityInfo, userStorage, method) {
     return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
   }
-  
-}
+};
 export default domUpdates;

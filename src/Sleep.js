@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-import sleepData from './data/sleep';
 import Utility from '../src/Utility'
 
 class Sleep extends Utility {
@@ -48,7 +47,6 @@ class Sleep extends Utility {
   }
   determineSleepWinnerForWeek(date, userRepo) {
     let timeline = userRepo.chooseWeekDataForAllUsers(this.sleepData, date);
-    // console.log(timeline);
     let sleepRankWithData = userRepo.combineRankedUserIDsAndAveragedData(this.sleepData, date, 'sleepQuality', timeline);
 
     return this.getWinnerNamesFromList(sleepRankWithData, userRepo);
@@ -73,6 +71,5 @@ class Sleep extends Utility {
     });
   }
 }
-
 
 export default Sleep;

@@ -6,20 +6,11 @@ import User from '../src/User';
 describe('User', function() {
 
   it('should be a function', function() {
-    const user = new User({
-      id: 1,
-      name: "Alex Roth",
-      address: "1234 Turing Street, Denver CO 80301-1697",
-      email: "alex.roth1@hotmail.com",
-      strideLength: 4.3,
-      dailyStepGoal: 10000,
-      friends: [2, 3, 4]
-    });
     expect(User).to.be.a('function');
   });
 
   it('should be an instance of User', function() {
-    const user = new User({
+    const user1 = new User({
       id: 1,
       name: "Alex Roth",
       address: "1234 Turing Street, Denver CO 80301-1697",
@@ -28,7 +19,7 @@ describe('User', function() {
       dailyStepGoal: 10000,
       friends: [2, 3, 4]
     });
-    expect(user).to.be.an.instanceof(User);
+    expect(user1).to.be.an.instanceof(User);
   });
 
   it('should take a user data object', function() {
@@ -117,7 +108,6 @@ describe('User', function() {
     const users = [user1, user2, user3, user4];
     const userRepo = new UserRepo(users);
 
-    // console.log(user2.getFriendsNames(userRepo));
     expect(user2.getFriendsNames(userRepo)).to.deep.equal(['Alex Roth', 'The Rock', 'Rainbow Dash']);
   });
 });
