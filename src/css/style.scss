@@ -295,7 +295,7 @@ h1 {
 .sleep-input {
   @include standard-flex(column);
   justify-content: flex-start;
-  margin: .5em;
+  margin: 1em;
   background-color: $sleep-color;
   height: 100%;
   font-family: sans-serif;
@@ -303,20 +303,10 @@ h1 {
   text-align: center;
 }
 
-.activity-input-container {
-  @include simple-border(black);
-  @include standard-flex(column);
-  align-items: center;
-  justify-content: space-between;
-  margin: 1%;
-  background-color: white;
-  width: 50%;
-}
-
 .activity-input {
   @include standard-flex(column);
   justify-content: flex-start;
-  margin: .5em;
+  margin: 1em;
   background-color: $activity-color;
   height: 100%;
   font-family: sans-serif;
