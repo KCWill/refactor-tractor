@@ -18,9 +18,9 @@ $activity-color: #DFE166;
     margin: 10px;
     border-radius: 3px;
     border: 1px solid black;
-    background-color: complement($color);
+    background-color: $color;
     &:hover{
-      background-color: $color;
+      background-color: complement($color);
     }
 }
 
@@ -43,15 +43,15 @@ h1 {
 }
 
 #hydration-submit {
-  @include add-data-button($hydration-color)
-}
-
-#activity-submit {
   @include add-data-button($activity-color)
 }
 
-#sleep-submit {
+#activity-submit {
   @include add-data-button($sleep-color)
+}
+
+#sleep-submit {
+  @include add-data-button($activity-color)
 }
 
 .main {
@@ -74,7 +74,7 @@ h1 {
   text-align: center;
 }
 
-.sidebar-header-name {
+#sidebarName {
   text-align: center;
 }
 
