@@ -107,8 +107,6 @@ $('#minutes-active').bind('input', function() {
   this.value = this.value.replace(/[^0-9]/g, '');
 });
 
-
-
 $('#hydration-form').submit((event) => {
   event.preventDefault();
   let hydrationForm = {
