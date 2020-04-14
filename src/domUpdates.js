@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import $ from 'jquery';
 
 const domUpdates = {
@@ -8,14 +9,12 @@ const domUpdates = {
   addInfoToSidebar(user, userStorage) {
     $('#sidebarName').text(user.name);
     $('#headerText').text(`${user.getFirstName()}'s Activity Tracker`);
-    // header.innerText = (`${user.getFirstName()}'s Activity Tracker`)
     $('#stepGoalCard').text(`Your daily step goal is ${user.dailyStepGoal}.`);
     $('#avStepGoalCard').text(`The average daily step goal is ${userStorage.calculateAverageStepGoal()}`);
     $('#userAddress').text(user.address);
     $('#userEmail').text(user.email);
-    $('#userStridelength').text(`Your stridelength is ${user.strideLength} meters.`);
+    $('#userStridelength').text(`Your stride length is ${user.strideLength} meters.`);
     $(this.makeFriendHTML(user, userStorage)).insertAfter($("#friendList"));
-    // $(makeFriendHTML(user, userStorage)).insertAfter($("#friendList"))
   },
   addHydrationInfo(id, hydrationInfo, dateString, userStorage, laterDateString) {
     $(`<p>You drank</p><p><span class="number">${Math.round(hydrationInfo.calculateDailyOunces(id, dateString))}</span></p><p>oz water today.</p>`).insertAfter($("#hydrationToday"));
@@ -31,10 +30,9 @@ const domUpdates = {
   addSleepInfo(id, sleepInfo, dateString, userStorage, laterDateString) {
     $(`<p>You slept</p> <p><span class="number">${sleepInfo.calculateDailySleep(id, dateString)}</span></p> <p>hours today.</p>`).insertAfter($("#sleepToday"));
     $(`<p>Your sleep quality was</p> <p><span class="number">${sleepInfo.calculateDailySleepQuality(id, dateString)}</span></p><p>out of 5.</p>`).insertAfter($("#sleepQualityToday"));
-    $(`<p>The average user's sleep quality is</p> <p><span class="number">${Math.round(sleepInfo.calculateAllUserSleepQuality() *100)/100}</span></p><p>out of 5.</p>`).insertAfter($("#avUserSleepQualityToday"));
+    $(`<p>The average user's sleep quality is</p> <p><span class="number">${Math.round(sleepInfo.calculateAllUserSleepQuality() * 100) / 100}</span></p><p>out of 5.</p>`).insertAfter($("#avUserSleepQualityToday"));
     $(this.makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(dateString, id, userStorage))).insertAfter($("#sleepThisWeek"));
     $('#sleepEarlierWeek').html(this.makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(laterDateString, id, userStorage)));
-    // this.sleepEarlierWeek.insertAdjacentHTML('afterBegin', this.makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(laterDateString, id, userStorage)));
   },
 
   makeSleepHTML(id, sleepInfo, userStorage, method) {
@@ -85,6 +83,5 @@ const domUpdates = {
   makeStepStreakHTML(id, activityInfo, userStorage, method) {
     return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
   }
-
-}
+};
 export default domUpdates;

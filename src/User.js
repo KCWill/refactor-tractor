@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 class User {
   constructor(userDetails) {
     this.id = userDetails.id;

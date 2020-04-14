@@ -1,8 +1,3 @@
-import sleepData from './data/sleep';
-import activityData from './data/activity';
-import hydrationData from './data/hydration';
-
-
 class Utility {
   constructor(dataSet) {
     this.dataSet = dataSet;

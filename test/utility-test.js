@@ -1,20 +1,10 @@
+/* eslint-disable max-len */
 import { expect } from 'chai';
 import Utility from '../src/Utility';
-
-import sleepData from '../src/data/sleep';
-import Sleep from '../src/sleep';
-
-import UserRepo from '../src/User-repo';
-import User from '../src/User';
-// import userData from '../data/users';
-
-
 
 describe ('Utility', () => {
   let sleepData;
   let utility;
-  let sleep;
-  let user1;
 
   beforeEach( () => {
 
@@ -32,17 +22,6 @@ describe ('Utility', () => {
         "sleepQuality": 3.6
       }];
 
-    user1 = new User({
-      id: 1,
-      name: "Alex Roth",
-      address: "1234 Turing Street, Denver CO 80301-1697",
-      email: "alex.roth1@hotmail.com",
-      strideLength: 4.3,
-      dailyStepGoal: 5000,
-      friends: [2, 3, 4]
-    });
-   
-    sleep = new Sleep(sleepData);
     utility = new Utility(sleepData);
 
   });
@@ -60,7 +39,6 @@ describe ('Utility', () => {
   it('should calculate the average', () => {
 
     expect(utility.calculateAverage('sleepQuality')).to.eql(2.9000000000000004)
-  })
-
+  });
 
 });
