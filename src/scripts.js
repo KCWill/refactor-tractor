@@ -55,13 +55,105 @@ const hydrationDate = datepicker('#date-hydration', {
     const value = date.toISOString().slice(0, 10).replace(/-/g, "/");
     input.value = value;
   }
-})
+});
+
+const activityDate = datepicker('#date-activity-picker', {
+  formatter: (input, date, instance) => {
+    const value = date.toISOString().slice(0, 10).replace(/-/g, "/");
+    input.value = value;
+  }
+});
+
+const sleepDate = datepicker('#date-sleep', {
+  formatter: (input, date, instance) => {
+    const value = date.toISOString().slice(0, 10).replace(/-/g, "/");
+    input.value = value;
+  }
+});
+
+$('#hydration-ounces').bind('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+$('#hydration-Id').bind('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+$('#activity-Id').bind('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+$('#steps').bind('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+$('#minutes-active').bind('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+$('#flights-of-stairs').bind('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+$('#sleep-id').bind('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+$('#hours-slept').bind('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+$('#minutes-active').bind('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
 
 $('#hydration-form').submit((event) => {
   event.preventDefault();
-  let hydrationForm = new FormData();
-  hydrationForm.append('userID', +`${$('#hydration-Id').val()}`);
-  hydrationForm.append('date', `${$('#date-hydration').val()}`);
-  hydrationForm.append('numOunces', +`${$('#ounces').val()}`);
-  console.log(...hydrationForm);
-})
+  let hydrationForm = {
+    userID: +$('#hydration-Id').val(),
+    date: $('#date-hydration').val(),
+    numOunces: +$('#ounces').val()
+  }
+  let url = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData";
+  postData(url, hydrationForm)
+});
+
+$('#activity-form').submit((event) => {
+  event.preventDefault();
+  let activityForm = {
+    userID: +$('#activity-Id').val(),
+    date: $('#date-activity-picker').val(),
+    numSteps: +$('#steps').val(),
+    minutesActive: +$('#minutes-active').val(),
+    flightsOfStairs: +$('#flights-of-stairs').val()
+  }
+  let url = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData";
+  postData(url, activityForm);
+});
+
+$('#sleep-form').submit((event) => {
+  event.preventDefault();
+  let sleepForm = {
+    userID: +$('#sleep-id').val(),
+    date: $('#date-sleep').val(),
+    hoursSlept: +$('#hours-slept').val(),
+    sleepQuality: +$('#sleep-quality').val()
+  }
+  let url = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData";
+  postData(url, sleepForm);
+});
+
+function postData(url, form) {
+  if (form.userID < 51 && form.userID > 0) {
+    fetch(url, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(form),
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.error(err))
+  }
+}

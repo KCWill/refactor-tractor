@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <html lang="en">
   <meta charset="UTF-8">
   <title>Activity Tracker</title>
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet" />
@@ -14,37 +15,35 @@
 <body>
   <h1 id="headerText">Activity Tracker</h1>
   <section class="main">
-    <section class="main-sidebar-body">
+    <aside class="main-sidebar-body">
       <section class="body-sidebar-sidebarContainer">
         <h2 class="sidebar-header-name" id="sidebarName">Name Name</h2>
-        <div class="sidebar-header-line"></div>
-        <img src="./images/The Rock.jpg" class="sidebar-header-userImage"></img>
-        <div class="sidebar-header-line"></div>
-        <p class="sidebar-header-userInfo" id="userAddress"></p>
-        <div class="sidebar-header-line"></div>
-        <p class="sidebar-header-userInfo" id="userEmail"></p>
-        <div class="sidebar-header-line"></div>
-        <p class="sidebar-header-userInfo" id="userStridelength"></p>
-        <div class="sidebar-header-line"></div>
-        <p class="sidebar-header-userInfo" id="stepGoalCard"></p>
-        <p class="sidebar-header-userInfo" id="avStepGoalCard">
-          <p>
-            <div class="sidebar-header-line"></div>
-            <section class="sidebar-body-friendContainer">
-              <p class="sidebar-header-userInfo">Friends</p>
-              <section class="sidebar-friendContainer-listItems">
-                <ul class="card-vertical-list" id="friendList">
-                  <!-- friend list goes here -->
-                </ul>
-              </section>
-              <div class="sidebar-header-line"></div>
-              <p class="thisWeek">Keep up the good work! You were increasingly active on these dates:</p>
-              <ul class="card-vertical-list" id="streakListMinutes">
-                <!-- friend list goes here -->
-              </ul>
-            </section>
+        <section class="sidebar-header-line"></section>
+        <img src="./images/The Rock.jpg" class="sidebar-header-userImage" alt="profile-picture"></img>
+        <section class="sidebar-header-line"></section>
+        <h2 class="sidebar-header-userInfo" id="userAddress"></h2>
+        <section class="sidebar-header-line"></section>
+        <h2 class="sidebar-header-userInfo" id="userEmail"></h2>
+        <section class="sidebar-header-line"></section>
+        <h2 class="sidebar-header-userInfo" id="userStridelength"></h2>
+        <section class="sidebar-header-line"></section>
+        <h2 class="sidebar-header-userInfo" id="stepGoalCard"></h2>
+        <section class="sidebar-header-line"></section>
+        <section class="sidebar-body-friendContainer">
+          <h2 class="sidebar-header-userInfo">Friends</h2>
+          <section class="sidebar-friendContainer-listItems">
+            <ul class="card-vertical-list" id="friendList">
+              <!-- friend list goes here -->
+            </ul>
+          </section>
+          <div class="sidebar-header-line"></div>
+          <p class="thisWeek">Keep up the good work! You were increasingly active on these dates:</p>
+          <ul class="card-vertical-list" id="streakListMinutes">
+            <!-- friend list goes here -->
+          </ul>
+        </section>
       </section>
-    </section>
+    </aside>
     <section class="body-main-infoContainter">
       <section class="main-column-hydration">
         <section class="infoContainer-cardContainer-card-horizontal">
@@ -57,7 +56,7 @@
         </section>
         <section class="infoContainer-cardContainer-card-vertical">
           <div class="card-history-hydration">
-            <p class="thisWeek">Water intake this week:</p>
+            <h2 class="thisWeek">Water intake this week:</h2>
             <div class="sidebar-header-line"></div>
             <ul class="card-vertical-list" id="hydrationThisWeek">
               <!-- Hydration week list goes here -->
@@ -75,11 +74,11 @@
           <section class="hydration-input">
             <h3>Input Hydration Data</h3>
             <form id="hydration-form">
-              <label for="date">Enter User ID </label>
-              <input type="text" id="hydration-Id" required>
-              <label for="date">Date: </label>
+              <label for="hydration-Id">Enter User ID </label>
+              <input type="text" id="hydration-Id" label="Enter User ID 1-50" required>
+              <label for="date-hydration">Date: </label>
               <input type="text" id="date-hydration" required>
-              <label for="ounces-drank">Ounces Drank: </label>
+              <label for="ounces">Ounces Drank: </label>
               <input type="text" id="ounces" required>
               <input id="hydration-submit" type="submit" value="Submit">
             </form>
@@ -148,18 +147,20 @@
           </section>
         </section>
         <section class="activity-input-container">
-          <h3>Input Activity Data</h3>
           <section class="activity-input">
-            <form class="activity-form">
-              <label for="total-steps">Date: </label>
+            <h3>Input Activity Data</h3>
+            <form id="activity-form">
+              <label for="activity-Id">Enter User ID </label>
+              <input type="userid" id="activity-Id" label="Enter User ID 1-50" required>
+              <label for="date-activity-picker">Date: </label>
               <input type="text" id="date-activity-picker" required>
-              <label for="daily-steps">Steps Taken: </label>
+              <label for="steps">Steps Taken: </label>
               <input type="text" id="steps" required>
               <label for="minutes-active">Minutes Active: </label>
               <input type="text" id="minutes-active" required>
-              <label for="minutes-active">Flights of Stairs: </label>
+              <label for="flights-of-stairs">Flights of Stairs: </label>
               <input type="text" id="flights-of-stairs" required>
-              <input id="activity-submit" type="submit" value="Submit" />
+              <input id="activity-submit" type="submit" value="Submit">
             </form>
           </section>
         </section>
@@ -193,16 +194,18 @@
           </div>
         </section>
         <section class="sleep-input-container">
-          <h3>Input Sleep Data</h3>
           <section class="sleep-input">
-            <form class="sleep-form">
-                <label for="sleep-date">Date: </label>
-              <input type="text" id="date-activity" value="" /><br>
-                <label for="hours-slept">Hours Slept: </label>
-              <input type="text" id="hours-slept" value="" /><br>
+            <h3>Input Sleep Data</h3>
+            <form id="sleep-form" title="Sleep Input Form">
+              <label for="sleep-id">Enter User ID </label>
+              <input type="text" id="sleep-id" label="Enter User ID 1-50" required>
+              <label for="date-sleep">Date: </label>
+              <input type="text" id="date-sleep" required>
+              <label for="hours-slept">Hours Slept: </label>
+              <input type="text" id="hours-slept" required>
               <label for="sleep-quality">Sleep Quality: </label>
-              <input type="text" id="minutes-active" value="" /><br>
-              <input id="activity-submit" type="submit" value="Submit" />
+              <input type="text" id="sleep-quality" required>
+              <input id="activity-submit" type="submit" value="Submit">
             </form>
           </section>
         </section>
@@ -239,6 +242,7 @@
             </section>
       </section>
     </section>
+  </section>
   </section>
 </body>
 
