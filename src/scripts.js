@@ -41,14 +41,14 @@ function fetchUserData() {
 }
 
 fetchUserData().then(data => {
-  userData = data.userData;
-  sleepData = data.sleepData;
-  activityData = data.activityData;
-  hydrationData = data.hydrationData;
-}).then(function() {
-  index.startApp(userData, sleepData, activityData, hydrationData);
-});
-// .catch(error => console.log(error.message))
+    userData = data.userData;
+    sleepData = data.sleepData;
+    activityData = data.activityData;
+    hydrationData = data.hydrationData;
+  }).then(function() {
+    index.startApp(userData, sleepData, activityData, hydrationData);
+  })
+  .catch(error => console.log(error.message))
 
 const hydrationDate = datepicker('#date-hydration', {
   formatter: (input, date, instance) => {
@@ -115,7 +115,7 @@ $('#hydration-form').submit((event) => {
     numOunces: +$('#ounces').val()
   }
   let url = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData";
-  postData(url, hydrationForm)
+  postData(url, hydrationForm);
 });
 
 $('#activity-form').submit((event) => {
@@ -156,4 +156,5 @@ function postData(url, form) {
       .then(data => console.log(data))
       .catch(err => console.error(err))
   }
+  $(".datepicker").attr("autocomplete", "off");
 }
