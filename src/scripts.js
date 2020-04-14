@@ -4,7 +4,7 @@ import './images/person walking on path.jpg';
 import './images/The Rock.jpg';
 import index from './index';
 
-const datepicker = require('js-datepicker')
+const datepicker = require('js-datepicker');
 
 let userData;
 let sleepData;

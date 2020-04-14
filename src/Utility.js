@@ -1,6 +1,6 @@
 import sleepData from './data/sleep';
-import activityData from './data/sleep';
-import hydrationData from './data/sleep';
+import activityData from './data/activity';
+import hydrationData from './data/hydration';
 
 
 class Utility {
