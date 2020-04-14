@@ -46,12 +46,12 @@ const domUpdates = {
   },
 
   addActivityInfo(id, activityInfo, dateString, userStorage, laterDateString, user, winnerId) {
-    $(`<p>Stair Count:</p><p>You</><p><span class="number">${activityInfo.userDataForToday(id, dateString, userStorage, 'flightsOfStairs')}</span></p>`).insertAfter($('#userStairsToday'));
-    $(`<p>Stair Count: </p><p>All Users</p><p><span class="number">${activityInfo.getAllUserAverageForDay(dateString, userStorage, 'flightsOfStairs')}</span></p>`).insertAfter($('#avgStairsToday'));
-    $(`<p>Step Count:</p><p>You</p><p><span class="number">${activityInfo.userDataForToday(id, dateString, userStorage, 'numSteps')}</span></p>`).insertAfter($('#userStepsToday'))
-    $(`<p>Step Count:</p><p>All Users</p><p><span class="number">${activityInfo.getAllUserAverageForDay(dateString, userStorage, 'numSteps')}</span></p>`).insertAfter($('#avgStepsToday'));
-    $(`<p>Active Minutes:</p><p>You</p><p><span class="number">${activityInfo.userDataForToday(id, dateString, userStorage, 'minutesActive')}</span></p>`).insertAfter($('#userMinutesToday'));
-    $(`<p>Active Minutes:</p><p>All Users</p><p><span class="number">${activityInfo.getAllUserAverageForDay(dateString, userStorage, 'minutesActive')}</span></p>`).insertAfter($('#avgMinutesToday'));
+    $(`<p>Stair Count:</p><p>You</><p><span class="number">${Math.round(activityInfo.userDataForToday(id, dateString, userStorage, 'flightsOfStairs'))}</span></p>`).insertAfter($('#userStairsToday'));
+    $(`<p>Stair Count: </p><p>All Users</p><p><span class="number">${Math.round(activityInfo.getAllUserAverageForDay(dateString, userStorage, 'flightsOfStairs'))}</span></p>`).insertAfter($('#avgStairsToday'));
+    $(`<p>Step Count:</p><p>You</p><p><span class="number">${Math.round(activityInfo.userDataForToday(id, dateString, userStorage, 'numSteps'))}</span></p>`).insertAfter($('#userStepsToday'))
+    $(`<p>Step Count:</p><p>All Users</p><p><span class="number">${Math.round(activityInfo.getAllUserAverageForDay(dateString, userStorage, 'numSteps'))}</span></p>`).insertAfter($('#avgStepsToday'));
+    $(`<p>Active Minutes:</p><p>You</p><p><span class="number">${Math.round(activityInfo.userDataForToday(id, dateString, userStorage, 'minutesActive'))}</span></p>`).insertAfter($('#userMinutesToday'));
+    $(`<p>Active Minutes:</p><p>All Users</p><p><span class="number">${Math.round(activityInfo.getAllUserAverageForDay(dateString, userStorage, 'minutesActive'))}</span></p>`).insertAfter($('#avgMinutesToday'));
     $(this.makeStepsHTML(id, activityInfo, userStorage, activityInfo.userDataForWeek(id, dateString, userStorage, "numSteps"))).insertAfter($('#userStepsThisWeek'));
     $(this.makeStairsHTML(id, activityInfo, userStorage, activityInfo.userDataForWeek(id, dateString, userStorage, "flightsOfStairs"))).insertAfter($('#userStairsThisWeek'));
     $(this.makeMinutesHTML(id, activityInfo, userStorage, activityInfo.userDataForWeek(id, dateString, userStorage, "minutesActive"))).insertAfter($('#userMinutesThisWeek'))
@@ -85,6 +85,6 @@ const domUpdates = {
   makeStepStreakHTML(id, activityInfo, userStorage, method) {
     return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
   }
-  
+
 }
 export default domUpdates;
