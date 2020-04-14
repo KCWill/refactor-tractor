@@ -26,7 +26,8 @@ class Utility {
 
   calculateAverage(relevantData) {
     let relevantDataSum = this.dataSet.reduce(function(sumSoFar, dataItem) {
-      sumSoFar += dataItem.relevantData;
+    
+      sumSoFar += dataItem[relevantData];
       return sumSoFar;
     }, 0)
     return relevantDataSum / this.dataSet.length
