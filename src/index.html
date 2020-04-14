@@ -74,12 +74,12 @@
           <section class="hydration-input">
             <h3>Input Hydration Data</h3>
             <form id="hydration-form">
-              <label for="hydration-Id">Enter User ID </label>
-              <input type="text" id="hydration-Id" label="Enter User ID 1-50" required>
+              <label for="hydration-Id" >Enter User ID </label>
+              <input type="text" id="hydration-Id" placeholder="Enter User ID 1-50" tabindex="0"required>
               <label for="date-hydration">Date: </label>
-              <input type="text" id="date-hydration" required>
+              <input type="text" id="date-hydration" class="datepicker" tabindex="0" required>
               <label for="ounces">Ounces Drank: </label>
-              <input type="text" id="ounces" required>
+              <input type="text" id="ounces" tabindex="0" required>
               <input id="hydration-submit" type="submit" value="Submit">
             </form>
           </section>
@@ -151,15 +151,15 @@
             <h3>Input Activity Data</h3>
             <form id="activity-form">
               <label for="activity-Id">Enter User ID </label>
-              <input type="userid" id="activity-Id" label="Enter User ID 1-50" required>
+              <input type="userid" id="activity-Id" placeholder="Enter User ID 1-50" tabindex="0" required>
               <label for="date-activity-picker">Date: </label>
-              <input type="text" id="date-activity-picker" required>
+              <input type="text" id="date-activity-picker" class="datepicker" tabindex="0" required>
               <label for="steps">Steps Taken: </label>
-              <input type="text" id="steps" required>
+              <input type="text" id="steps" tabindex="0" required>
               <label for="minutes-active">Minutes Active: </label>
-              <input type="text" id="minutes-active" required>
+              <input type="text" id="minutes-active" tabindex="0" required>
               <label for="flights-of-stairs">Flights of Stairs: </label>
-              <input type="text" id="flights-of-stairs" required>
+              <input type="text" id="flights-of-stairs" tabindex="0" required>
               <input id="activity-submit" type="submit" value="Submit">
             </form>
           </section>
@@ -198,13 +198,13 @@
             <h3>Input Sleep Data</h3>
             <form id="sleep-form" title="Sleep Input Form">
               <label for="sleep-id">Enter User ID </label>
-              <input type="text" id="sleep-id" label="Enter User ID 1-50" required>
+              <input type="text" id="sleep-id" placeholder="Enter User ID 1-50" required>
               <label for="date-sleep">Date: </label>
-              <input type="text" id="date-sleep" required>
+              <input type="text" id="date-sleep" class="datepicker" tabindex="0" required>
               <label for="hours-slept">Hours Slept: </label>
-              <input type="text" id="hours-slept" required>
+              <input type="text" id="hours-slept" tabindex="0" required>
               <label for="sleep-quality">Sleep Quality: </label>
-              <input type="text" id="sleep-quality" required>
+              <input type="text" id="sleep-quality" tabindex="0" required>
               <input id="sleep-submit" type="submit" value="Submit">
             </form>
           </section>
@@ -215,7 +215,7 @@
       <section class="body-sidebar-sidebarContainer col3">
         <h2 class="sidebar-header-name" id="sidebarName">FRIENDLY STEP CHALLENGE!</h2>
         <div class="sidebar-header-line"></div>
-        <img src="./images/person walking on path.jpg" class="sidebar-header-userImage"></img>
+        <img src="./images/person walking on path.jpg" class="sidebar-header-userImage" alt="Woman walking on path"></img>
         <div class="sidebar-header-line"></div>
         <p class="sidebar-header-userInfo" id="bigWinner"></p>
         <div class="sidebar-header-line"></div>
