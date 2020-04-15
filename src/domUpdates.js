@@ -16,6 +16,7 @@ const domUpdates = {
     $('#userStridelength').text(`Your stride length is ${user.strideLength} meters.`);
     $('#friendList').append(this.makeFriendHTML(user, userStorage))
   },
+
   addHydrationInfo(id, hydrationInfo, dateString, userStorage, laterDateString) {
     $(`<p>You drank</p><p><span class="number">${Math.round(hydrationInfo.calculateDailyOunces(id, dateString))}</span></p><p>oz water today.</p>`).insertAfter($("#hydrationToday"));
     $(`<p>Your average water intake is</p><p><span class="number">${Math.round(hydrationInfo.calculateAverageOunces(id))}</span></p> <p>oz per day.</p>`).insertAfter($("#hydrationAverage"));
@@ -84,6 +85,25 @@ const domUpdates = {
 
   makeStepStreakHTML(id, activityInfo, userStorage, method) {
     return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
+  },
+
+  clearFormInputs() {
+    $('.input').each(function() {
+      $(this).val('')
+    });
+  },
+
+  displayAlertMessage(form) {
+    $(`#submit-message-${form}`).toggleClass('hidden');
+    this.removeSuccessMessage(form);
+  },
+
+  removeSuccessMessage(form) {
+    setTimeout(function() {
+      $(`#submit-message-${form}`).toggleClass('hidden');
+    }, 5000);
   }
+
+
 };
 export default domUpdates;

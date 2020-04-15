@@ -14,11 +14,11 @@ $activity-color: #DFE166;
 }
 
 @mixin add-data-button($color){
-    font-size: 1.2em;
     margin: 10px;
-    border-radius: 3px;
     border: 1px solid black;
+    border-radius: 3px;
     background-color: $color;
+    font-size: 1.2em;
     &:hover{
       background-color: complement($color);
     }
@@ -331,6 +331,10 @@ h1 {
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
 
 @media screen and (max-width: 600px) {
   * {
@@ -342,7 +346,6 @@ h1 {
     width: 100%;
     height: 1600px;
   }
-
 
   .col1 {
     display: inline-block;
@@ -363,4 +366,5 @@ h1 {
     display: inline-block;
     width: 100%;
   }
+
 }

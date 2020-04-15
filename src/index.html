@@ -63,7 +63,7 @@
             </ul>
           </div>
           <div class="card-history-hydration">
-            <p class="historicalWeek"></p>
+            <p class="historicalWeek">Hydration History:</p>
             <div class="sidebar-header-line"></div>
             <ul class="card-vertical-list" id="hydrationEarlierWeek">
               <!-- Hydration week list goes here -->
@@ -75,12 +75,13 @@
             <h3>Input Hydration Data</h3>
             <form id="hydration-form">
               <label for="hydration-Id" >Enter User ID </label>
-              <input type="text" id="hydration-Id" placeholder="Enter User ID 1-50" tabindex="0"required>
+              <input type="text" id="hydration-Id" class="input" placeholder="Enter User ID 1-50" tabindex="0"required>
               <label for="date-hydration">Date: </label>
-              <input type="text" id="date-hydration" class="datepicker" tabindex="0" required>
+              <input type="text" id="date-hydration" class="datepicker input" tabindex="0" required>
               <label for="ounces">Ounces Drank: </label>
-              <input type="text" id="ounces" tabindex="0" required>
+              <input type="text" id="ounces" class="input" tabindex="0" required>
               <input id="hydration-submit" type="submit" value="Submit">
+                <p class="hidden" id="submit-message-hydration">Congrats! Your Info Saved!</p>
             </form>
           </section>
         </section>
@@ -151,16 +152,17 @@
             <h3>Input Activity Data</h3>
             <form id="activity-form">
               <label for="activity-Id">Enter User ID </label>
-              <input type="userid" id="activity-Id" placeholder="Enter User ID 1-50" tabindex="0" required>
+              <input type="userid" id="activity-Id" class="input" placeholder="Enter User ID 1-50" tabindex="0" required>
               <label for="date-activity-picker">Date: </label>
-              <input type="text" id="date-activity-picker" class="datepicker" tabindex="0" required>
+              <input type="text" id="date-activity-picker" class="datepicker input" tabindex="0" required>
               <label for="steps">Steps Taken: </label>
-              <input type="text" id="steps" tabindex="0" required>
+              <input type="text" id="steps" class="input" tabindex="0" required>
               <label for="minutes-active">Minutes Active: </label>
-              <input type="text" id="minutes-active" tabindex="0" required>
+              <input type="text" id="minutes-active" class="input" tabindex="0" required>
               <label for="flights-of-stairs">Flights of Stairs: </label>
-              <input type="text" id="flights-of-stairs" tabindex="0" required>
+              <input type="text" id="flights-of-stairs" class="input" tabindex="0" required>
               <input id="activity-submit" type="submit" value="Submit">
+              <p class="hidden" id="submit-message-activity">Congrats! Your Info Saved!</p>
             </form>
           </section>
         </section>
@@ -186,7 +188,7 @@
             </ul>
           </div>
           <div class="card-history-sleep">
-            <p class="historicalWeek"></p>
+            <p class="historicalWeek">Sleep History</p>
             <div class="sidebar-header-line"></div>
             <ul class="card-vertical-list" id="sleepEarlierWeek">
               <!-- Sleep week list goes here -->
@@ -198,14 +200,15 @@
             <h3>Input Sleep Data</h3>
             <form id="sleep-form" title="Sleep Input Form">
               <label for="sleep-id">Enter User ID </label>
-              <input type="text" id="sleep-id" placeholder="Enter User ID 1-50" required>
+              <input type="text" id="sleep-id" class="input" placeholder="Enter User ID 1-50" required>
               <label for="date-sleep">Date: </label>
-              <input type="text" id="date-sleep" class="datepicker" tabindex="0" required>
+              <input type="text" id="date-sleep" class="datepicker input" tabindex="0" required>
               <label for="hours-slept">Hours Slept: </label>
-              <input type="text" id="hours-slept" tabindex="0" required>
+              <input type="text" id="hours-slept" class="input" tabindex="0" required>
               <label for="sleep-quality">Sleep Quality: </label>
-              <input type="text" id="sleep-quality" tabindex="0" required>
+              <input type="text" id="sleep-quality" class="input" tabindex="0" required>
               <input id="sleep-submit" type="submit" value="Submit">
+              <p class="hidden" id="submit-message-sleep">Congrats! Your Info Saved!</p>
             </form>
           </section>
         </section>

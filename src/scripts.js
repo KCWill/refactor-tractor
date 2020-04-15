@@ -4,6 +4,7 @@ import './css/style.scss';
 import './images/person walking on path.jpg';
 import './images/The Rock.jpg';
 import index from './index';
+import domUpdates from './domUpdates'
 
 const datepicker = require('js-datepicker');
 
@@ -109,6 +110,7 @@ $('#minutes-active').bind('input', function() {
 });
 
 $('#hydration-form').submit((event) => {
+  let hydration = 'hydration';
   event.preventDefault();
   let hydrationForm = {
     userID: +$('#hydration-Id').val(),
@@ -116,11 +118,12 @@ $('#hydration-form').submit((event) => {
     numOunces: +$('#ounces').val()
   }
   let url = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData";
-  postData(url, hydrationForm);
+  postData(url, hydrationForm, hydration);
 });
 
 $('#activity-form').submit((event) => {
   event.preventDefault();
+  let activity = 'activity';
   let activityForm = {
     userID: +$('#activity-Id').val(),
     date: $('#date-activity-picker').val(),
@@ -129,11 +132,12 @@ $('#activity-form').submit((event) => {
     flightsOfStairs: +$('#flights-of-stairs').val()
   }
   let url = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData";
-  postData(url, activityForm);
+  postData(url, activityForm, activity);
 });
 
 $('#sleep-form').submit((event) => {
   event.preventDefault();
+  let sleep = 'sleep';
   let sleepForm = {
     userID: +$('#sleep-id').val(),
     date: $('#date-sleep').val(),
@@ -141,10 +145,10 @@ $('#sleep-form').submit((event) => {
     sleepQuality: +$('#sleep-quality').val()
   }
   let url = "https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData";
-  postData(url, sleepForm);
+  postData(url, sleepForm, sleep);
 });
 
-function postData(url, form) {
+function postData(url, form, formName) {
   if (form.userID < 51 && form.userID > 0) {
     fetch(url, {
       method: "POST",
@@ -156,6 +160,10 @@ function postData(url, form) {
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(err => console.log(err))
+      domUpdates.displayAlertMessage(formName);
+      domUpdates.clearFormInputs();
+  } else {
+    alert("Please Enter a Valid User ID");
   }
-  $(".datepicker").attr("autocomplete", "off");
+
 }
