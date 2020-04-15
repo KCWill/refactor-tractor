@@ -16,7 +16,7 @@ This project refactors an already-existing codebase of a fitness and lifestyle t
 
 1. Clone down this repo into your desired folder.
 1. Run: `npm install js-datepicker`.
-1. Rum: `npm install`.
+1. Run: `npm install`.
 1. Open project in browser at address: http://localhost:8080/
 
 ## Contributors
