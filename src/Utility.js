@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 class Utility {
   constructor(dataSet) {
     this.dataSet = dataSet;

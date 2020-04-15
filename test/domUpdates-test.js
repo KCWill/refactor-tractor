@@ -4,9 +4,7 @@ import { expect } from 'chai';
 
 import User from '../src/User';
 import UserRepo from '../src/User-repo';
-import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
-import Sleep from '../src/Sleep';
 
 import index from '../src/index.js';
 import domUpdates from '../src/domUpdates';
@@ -22,6 +20,8 @@ describe('DomUpdates', () => {
   let users;
   let userRepo;
   let activityData;
+  let sleepData;
+  let hydrationData;
 
   beforeEach(() => {
     chai.spy.on(domUpdates, ['addSleepInfo'], () => null);
@@ -173,8 +173,44 @@ describe('DomUpdates', () => {
       "numSteps": 9000,
       "minutesActive": 8,
       "flightsOfStairs": 9
-    }
-    ];
+    }];
+
+    sleepData = [
+      {
+        "userID": 1,
+        "date": "2019/06/15",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/15",
+        "hoursSlept": 7,
+        "sleepQuality": 4.7
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/15",
+        "hoursSlept": 10.8,
+        "sleepQuality": 4.7
+      }];
+
+    hydrationData = [
+      {
+        "userID": 1,
+        "date": "2019/06/15",
+        "numOunces": 37
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/15",
+        "numOunces": 75
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/15",
+        "numOunces": 47
+      }];
 
     user1 = new User({
       id: 1,
@@ -221,24 +257,19 @@ describe('DomUpdates', () => {
   });
 
   it('should call addSleepInfo each time', () => {
-    let sleepInfo = new Sleep(sleepData);
-    let userRepo = new UserRepo(userData);
-
-    index.addSleepInfo(1, sleepInfo, '2019/06/15', userRepo, '2019/06/22');
+   
+    index.addSleepInfo(1, sleepData, '2019/06/15', userRepo, '2019/06/22');
 
     expect(domUpdates.addSleepInfo).to.be.called(1)
-    expect(domUpdates.addSleepInfo).to.be.called.with(sleepInfo, 1, '2019/06/15', userRepo, '2019/06/22');
+    expect(domUpdates.addSleepInfo).to.be.called.with(sleepData, 1, '2019/06/15', userRepo, '2019/06/22');
   });
 
   it('should call domUpdates.addHydrationInfo', () => {
-    let hydrationInfo = new Hydration(hydrationData);
-    let userRepo = new UserRepo(userData);
 
-    index.addHydrationInfo(1, hydrationInfo, '2019/06/15', userRepo, '2019/06/22');
+    index.addHydrationInfo(1, hydrationData, '2019/06/15', userRepo, '2019/06/22');
 
     expect(domUpdates.addHydrationInfo).to.be.called(1);
-    expect(domUpdates.addHydrationInfo).to.be.called.with.exactly(1, hydrationInfo, '2019/06/15', userRepo, '2019/06/22');
-
+    expect(domUpdates.addHydrationInfo).to.be.called.with.exactly(1, hydrationData, '2019/06/15', userRepo, '2019/06/22');
   });
 
   it('should call addInfoToSidebar', () => {

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 import './css/base.scss';
 import './css/style.scss';
@@ -43,13 +44,13 @@ function fetchUserData() {
 }
 
 fetchUserData().then(data => {
-    userData = data.userData;
-    sleepData = data.sleepData;
-    activityData = data.activityData;
-    hydrationData = data.hydrationData;
-  }).then(function() {
-    index.startApp(userData, sleepData, activityData, hydrationData);
-  })
+  userData = data.userData;
+  sleepData = data.sleepData;
+  activityData = data.activityData;
+  hydrationData = data.hydrationData;
+}).then(function() {
+  index.startApp(userData, sleepData, activityData, hydrationData);
+})
   .catch(error => console.log(error.message))
 
 const hydrationDate = datepicker('#date-hydration', {
@@ -160,8 +161,8 @@ function postData(url, form, formName) {
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(err => console.log(err))
-      domUpdates.displayAlertMessage(formName);
-      domUpdates.clearFormInputs();
+    domUpdates.displayAlertMessage(formName);
+    domUpdates.clearFormInputs();
   } else {
     alert("Please Enter a Valid User ID");
   }

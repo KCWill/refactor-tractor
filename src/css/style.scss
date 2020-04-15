@@ -113,7 +113,7 @@ h1 {
   text-align: left;
 }
 
-.body-main-infoContainter {
+.body-main-infoContainer {
   @include standard-flex(column);
   margin: 0 0 1em;
   border: 1px solid black;

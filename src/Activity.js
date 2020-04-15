@@ -105,7 +105,7 @@ class Activity extends Utility {
   getWinnerId(user, date, userRepo) {
     let rankedList = this.getFriendsAverageStepsForWeek(user, date, userRepo);
     let keysList = rankedList.map(listItem => Object.keys(listItem));
-    return parseInt(keysList[0].join(''))
+    return parseInt(keysList[0].join(''));
   }
 }
 
