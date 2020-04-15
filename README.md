@@ -26,4 +26,8 @@ This project refactors an already-existing codebase of a fitness and lifestyle t
 
 ## Composition
 
-<img width="500px" alt="Refactor Tractor Composition View" src="">
+<img width="700px" alt="Refactor Tractor Composition View" src="./src/images/Comp.png">
+<br><br>
+<img width="700px" alt="Refactor Tractor Composition View with Input Error" src="./src/images/CompWithError.png">
+<br><br>
+<img alt="Accessibility score" src="./src/images/AccessibilityScore.png">
