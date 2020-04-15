@@ -70,11 +70,9 @@ const domUpdates = {
   },
 
   addFriendGameInfo(id, activityInfo, userStorage, dateString, laterDateString, user) {
-    // $(this.makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage))).insertAfter($('#friendChallengeListToday'));
     $("#friendChallengeListToday").append(this.makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)))
     $('#streakList').append(this.makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'numSteps')));
     $('#streakListMinutes').append(this.makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'minutesActive')));
-    // $(this.makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage))).insertAfter($('#friendChallengeListHistory'));
     $("#friendChallengeListHistory").append(this.makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)))
     $('#bigWinner').text(`THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`);
   },
@@ -103,7 +101,5 @@ const domUpdates = {
       $(`#submit-message-${form}`).toggleClass('hidden');
     }, 5000);
   }
-
-
 };
 export default domUpdates;
