@@ -14,14 +14,14 @@ const domUpdates = {
     $('#userAddress').text(user.address);
     $('#userEmail').text(user.email);
     $('#userStridelength').text(`Your stride length is ${user.strideLength} meters.`);
-    $(this.makeFriendHTML(user, userStorage)).insertAfter($("#friendList"));
+    $('#friendList').append(this.makeFriendHTML(user, userStorage))
   },
 
   addHydrationInfo(id, hydrationInfo, dateString, userStorage, laterDateString) {
     $(`<p>You drank</p><p><span class="number">${Math.round(hydrationInfo.calculateDailyOunces(id, dateString))}</span></p><p>oz water today.</p>`).insertAfter($("#hydrationToday"));
     $(`<p>Your average water intake is</p><p><span class="number">${Math.round(hydrationInfo.calculateAverageOunces(id))}</span></p> <p>oz per day.</p>`).insertAfter($("#hydrationAverage"));
-    $(this.makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateFirstWeekOunces(userStorage, id))).insertAfter($("#hydrationThisWeek"));
-    $(this.makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateRandomWeekOunces(laterDateString, id, userStorage))).insertAfter($("#hydrationEarlierWeek"));
+    $("#hydrationThisWeek").append(this.makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateFirstWeekOunces(userStorage, id)));
+    $("#hydrationEarlierWeek").append(this.makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateRandomWeekOunces(laterDateString, id, userStorage)))
   },
 
   makeHydrationHTML(id, hydrationInfo, userStorage, method) {
@@ -32,7 +32,7 @@ const domUpdates = {
     $(`<p>You slept</p> <p><span class="number">${sleepInfo.calculateDailySleep(id, dateString)}</span></p> <p>hours today.</p>`).insertAfter($("#sleepToday"));
     $(`<p>Your sleep quality was</p> <p><span class="number">${sleepInfo.calculateDailySleepQuality(id, dateString)}</span></p><p>out of 5.</p>`).insertAfter($("#sleepQualityToday"));
     $(`<p>The average user's sleep quality is</p> <p><span class="number">${Math.round(sleepInfo.calculateAllUserSleepQuality() * 100) / 100}</span></p><p>out of 5.</p>`).insertAfter($("#avUserSleepQualityToday"));
-    $(this.makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(dateString, id, userStorage))).insertAfter($("#sleepThisWeek"));
+    $('#sleepThisWeek').append(this.makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(dateString, id, userStorage)));
     $('#sleepEarlierWeek').html(this.makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(laterDateString, id, userStorage)));
   },
 
@@ -51,10 +51,10 @@ const domUpdates = {
     $(`<p>Step Count:</p><p>All Users</p><p><span class="number">${Math.round(activityInfo.getAllUserAverageForDay(dateString, userStorage, 'numSteps'))}</span></p>`).insertAfter($('#avgStepsToday'));
     $(`<p>Active Minutes:</p><p>You</p><p><span class="number">${Math.round(activityInfo.userDataForToday(id, dateString, userStorage, 'minutesActive'))}</span></p>`).insertAfter($('#userMinutesToday'));
     $(`<p>Active Minutes:</p><p>All Users</p><p><span class="number">${Math.round(activityInfo.getAllUserAverageForDay(dateString, userStorage, 'minutesActive'))}</span></p>`).insertAfter($('#avgMinutesToday'));
-    $(this.makeStepsHTML(id, activityInfo, userStorage, activityInfo.userDataForWeek(id, dateString, userStorage, "numSteps"))).insertAfter($('#userStepsThisWeek'));
-    $(this.makeStairsHTML(id, activityInfo, userStorage, activityInfo.userDataForWeek(id, dateString, userStorage, "flightsOfStairs"))).insertAfter($('#userStairsThisWeek'));
-    $(this.makeMinutesHTML(id, activityInfo, userStorage, activityInfo.userDataForWeek(id, dateString, userStorage, "minutesActive"))).insertAfter($('#userMinutesThisWeek'))
-    $(this.makeStepsHTML(user, activityInfo, userStorage, activityInfo.userDataForWeek(winnerId, dateString, userStorage, "numSteps"))).insertAfter($('#bestUserSteps'));
+    $('#userStepsThisWeek').append(this.makeStepsHTML(id, activityInfo, userStorage, activityInfo.userDataForWeek(id, dateString, userStorage, "numSteps")))
+    $('#userStairsThisWeek').append(this.makeStairsHTML(id, activityInfo, userStorage, activityInfo.userDataForWeek(id, dateString, userStorage, "flightsOfStairs")))
+    $('#userMinutesThisWeek').append(this.makeMinutesHTML(id, activityInfo, userStorage, activityInfo.userDataForWeek(id, dateString, userStorage, "minutesActive")));
+    $('#bestUserSteps').append(this.makeStepsHTML(user, activityInfo, userStorage, activityInfo.userDataForWeek(winnerId, dateString, userStorage, "numSteps")))
   },
 
   makeStepsHTML(id, activityInfo, userStorage, method) {
@@ -70,10 +70,12 @@ const domUpdates = {
   },
 
   addFriendGameInfo(id, activityInfo, userStorage, dateString, laterDateString, user) {
-    $(this.makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage))).insertAfter($('#friendChallengeListToday'));
-    $(this.makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'numSteps'))).insertAfter($('#streakList'));
-    $(this.makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'minutesActive'))).insertAfter($('#streakListMinutes'));
-    $(this.makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage))).insertAfter($('#friendChallengeListHistory'));
+    // $(this.makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage))).insertAfter($('#friendChallengeListToday'));
+    $("#friendChallengeListToday").append(this.makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)))
+    $('#streakList').append(this.makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'numSteps')));
+    $('#streakListMinutes').append(this.makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'minutesActive')));
+    // $(this.makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage))).insertAfter($('#friendChallengeListHistory'));
+    $("#friendChallengeListHistory").append(this.makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)))
     $('#bigWinner').text(`THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`);
   },
 
